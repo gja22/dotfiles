@@ -1,0 +1,22 @@
+# Base gitignore file
+# Useful starting point when creating a new Git repo
+
+# Mac finder stuff
+.DS_Store
+
+# emacs
+*~
+\#*\#
+
+# Vim
+*.swp
+*.swo
+
+# Jetbrains IDEs
+.idea/
+
+# Sublime
+*.sublime-workspace
+
+# Hugo Public Site
+public/
