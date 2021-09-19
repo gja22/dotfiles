@@ -2,7 +2,7 @@
 echo "executing .bash_profile"
 
 # Customise the shell prompt
-PS1="$ "
+PS1="\W$ "
 
 # Set aliases
 alias ls='ls -aG'                      #colorized output and hidden files
