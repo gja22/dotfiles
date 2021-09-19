@@ -1,7 +1,7 @@
 # dotfiles
 
 ## Installation
-In the location of your choice run the following command.
+Clone the repo to your desired location.
 
 `git clone https://github.com/gja22/dotfiles.git`
 
