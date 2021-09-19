@@ -1,7 +1,7 @@
 # dotfiles
 
 ## Installation
-Clone the repo to your desired location.
+Clone the repo to your desired location. I tend to place it in my home directory `~/dotfiles`.
 
 `git clone https://github.com/gja22/dotfiles.git`
 
