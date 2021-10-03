@@ -32,7 +32,7 @@ To install first clone the git repo to a location of your preference.
 
 Then copy the color file to the right Vim directory.
 
-`cd vim-colors-solarized/colors`
+`cd vim-colors-solarized/colors`\
 `mv solarized.vim ~/.vim/colors/`
 
 Now modify .vimrc (this is already in my default vimrc file):
