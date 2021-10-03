@@ -1,4 +1,5 @@
 # .bash_profile is executed when the shell starts
+bash --version
 echo "executing .bash_profile"
 
 # Customise the shell prompt
@@ -13,6 +14,7 @@ alias p='pwd'
 alias cp='cp -iv'                      #-i prompt to overwrite
 alias mv='mv -iv'                      #-i prompt to overwrite
 alias path='echo $PATH | tr ":" "\n"'  #show path on separate lines.
+alias reload='source ~/.bash_profile'  #reload bach profile in current session
 
 cd() { builtin cd "$@"; pwd; }
 
