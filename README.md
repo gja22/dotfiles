@@ -19,13 +19,15 @@ In your home directory run the following commands:
 Where `dotfiles` is the location of the cloned dotfiles repo.
 
 ## Vim Configuration
-Create the `~/.vim` directory:\
-`mkdir ~/.vim`
-
-Change to the `~/.vim` directory and create a link to the vimrc file:
+A little setup for the first time on new machines:
 ```
+mkdir ~/.vim
 cd ~/.vim
 ln -s ~/dotfiles/vimrc vimrc
+mkdir backup
+mkdir swp
+mkdir undo
+mkdir colors
 ```
 
 ### Vim Color Schemes
@@ -40,7 +42,7 @@ Then copy the color file to the right Vim directory.
 `cd vim-colors-solarized/colors`\
 `mv solarized.vim ~/.vim/colors/`
 
-Now modify .vimrc (this is already in my default vimrc file):
+Now modify vimrc (this is already in my default vimrc file):
 
 ```
 syntax enable
