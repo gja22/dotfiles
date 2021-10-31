@@ -10,10 +10,20 @@ let mapleader=" "                        "Default leader is '\' but space works 
 set number                               "Enable line numbers
 set relativenumber                       "Enable relative line numbers
 set encoding=utf8                        "Set utf8 as standard encoding
+set fileencoding=utf8                    "Set utf8 as standard encoding
 
-" Display invisible characters
-"set list lcs=tab:▸.,trail:•,nbsp:␣,eol:¬
-"set list lcs=tab:▸.,space:\ ,trail:~,nbsp:␣,eol:¬
+" Display options for hidden/list characters
+"set lcs=tab:▸.,trail:•,nbsp:␣,eol:¬
+"set lcs=tab:▸.,space:\ ,trail:~,nbsp:␣,eol:¬
+set lcs=tab:▸.,trail:~,nbsp:␣,eol:¬
+" Do not show hidden/list characters by default
+set nolist
+" Toggle hidden/list characters
+nnoremap <leader>h :set list!<CR>
+
+" Set tab width to 4 characters
+set tabstop=4
+set shiftwidth=4
 
 " wrap long lines
 set wrap
@@ -26,10 +36,20 @@ set directory=~/.vim/swp
 set undodir=~/.vim/undo
 
 "----------Disable Arrows -----"         "Useful when getting the hang of using h j k l
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Right> <Nop>
-inoremap <Left> <Nop>
+"inoremap <Up> <Nop>
+"inoremap <Down> <Nop>
+"inoremap <Right> <Nop>
+"inoremap <Left> <Nop>
+
+"----------Smart Pairs---------"
+""inoremap ( ()<Left>
+""inoremap [ []<Left>
+""inoremap { {}<Left>
+""inoremap " ""<Left>
+""inoremap ' ''<Left>
+"Move right in insert mode
+""inoremap ;; <Right>
+"inoremap ll <Right>
 
 "----------Buffers---------"
 "Fast save
@@ -37,7 +57,10 @@ nnoremap <leader>w :w<cr>
 "Fast quit
 nnoremap <leader>q :q<cr>
 "Easier escape key
-inoremap jk <esc>
+"inoremap jk <esc>
+"inoremap kj <esc>
+"inoremap ii <esc>
+inoremap <Tab> <esc>
 "Delete current buffer
 nnoremap <leader>x :bd<CR>
 "List buffers and allow selection
@@ -45,9 +68,10 @@ nnoremap <leader>b :ls<CR>:b<Space>
 "Change local directory to location of current open file in window
 "nnoremap <leader>cd :lcd %:h<CR>
 " Open files from working directory
-nnoremap <leader>ee :edit<Space>
+nnoremap <leader>e :edit<Space>
+"nnoremap <leader>ee :edit<Space>
 " Open files located within the same dir in with the current file is edited
-nnoremap <leader>ew :edit <C-R>=expand("%:.:h") . "/"<CR>
+"nnoremap <leader>ew :edit <C-R>=expand("%:.:h") . "/"<CR>
 " Easy cycling between buffers
 nnoremap <silent> [b :bprevious<CR><Space>
 nnoremap <silent> ]b :bnext<CR><Space>
@@ -55,6 +79,16 @@ nnoremap <silent> [B :bfirst<CR><Space>
 nnoremap <silent> ]B :blast<CR><Space>
 
 "----------Windows---------"
+set splitbelow
+set splitright
+nnoremap <leader><Right> <C-w>v
+nnoremap <leader><Down> <C-w>s
+"make all windows equal size
+nnoremap <leader>= <C-w>=
+"increase height of window
+nnoremap <leader><Up> <C-w>5+
+"increase width of window
+nnoremap <leader><Left> <C-w>5>
 "Use arrows in normal mode to move between windows.
 "This makes me smile every time!
 nnoremap <Down> <c-w>j
@@ -77,6 +111,8 @@ colorscheme solarized
 set t_CO=256                        "Make sure terminal uses 256 colors.
 
 "-----------Status-Line--------"
+" visual indication of active window
+hi statusline ctermfg=red
 set laststatus=2                   "Make sure statusline displays on startup
 "set statusline=[%{getcwd()}]       "Working directory
 set statusline=[%t]                "Filename without path
@@ -94,7 +130,7 @@ let @/ = ""                             "But not when sourcing .vimrc
 set incsearch                           "Enable incremental search
 set ignorecase                          "Ignore case when searching
 "Simple search highlight removal
-nmap <leader><space> :nohlsearch<cr>
+nmap <silent> <leader><space> :nohlsearch<cr>
 
 "----------netrw configuration----------"
 " No banner by default - can be toggled using `I`
