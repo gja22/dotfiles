@@ -6,8 +6,8 @@ echo "executing .bash_profile"
 PS1="\W$ "
 
 # Set aliases
-alias ls='ls -aG'                      #colorized output and hidden files
-alias ll='ls -alG'                     #long listing, colorized output and hidden files
+alias ls='ls -aGF'                     #colorized output and hidden files
+alias ll='ls -lGF'                    #long listing, colorized output
 alias mkdir='mkdir -pv'	               #-p create intermediate dirs
 alias c='clear'
 alias p='pwd'
