@@ -4,113 +4,109 @@
 set nocompatible                         "We want the latest Vim settings and options.
 filetype plugin on
 syntax enable
-
-set backspace=indent,eol,start           "Make backspace behave like other editors
 let mapleader=" "                        "Default leader is '\' but space works better for me
-set number                               "Enable line numbers
-set relativenumber                       "Enable relative line numbers
 set encoding=utf8                        "Set utf8 as standard encoding
 set fileencoding=utf8                    "Set utf8 as standard encoding
 
-" Display options for hidden/list characters
-"set lcs=tab:▸.,trail:•,nbsp:␣,eol:¬
-"set lcs=tab:▸.,space:\ ,trail:~,nbsp:␣,eol:¬
-set lcs=tab:▸.,trail:~,nbsp:␣,eol:¬
-" Do not show hidden/list characters by default
-set nolist
-" Toggle hidden/list characters
+" color scheme
+colorscheme slate                        " prefer builtin schemes
+"set t_CO=256                             " ensure terminal uses 256 colors
+
+" display options
+set cursorline                           " highlight the current line
+set number                               " show line numbers
+set norelativenumber                     " no relative line numbers
+set wrap                                 " wrap long lines
+set linebreak                            " split on whitespace, no broken words
+set showmatch                            " show matching brackets
+set showmode                             " show INSERT, VISUAL, etc. mode
+set scrolloff=5                          " show at least 5 lines above/below
+
+" tabs and indenting
+set backspace=indent,eol,start           " make backspace behave like other editors
+set smarttab                             " better backspace and tab functionality
+set autoindent                           " auto indenting
+set smartindent                          " smart indenting
+set expandtab                            " spaces instead of tabs
+set tabstop=2                            " 2 spaces for tabs
+set shiftwidth=2                         " 2 spaces for indentation
+
+" listchar options
+set lcs=tab:▸.,trail:~,nbsp:␣,eol:¬      " listchar format
+set nolist                               " hide listchars
+" toggle listchars
 nnoremap <leader>h :set list!<CR>
 
-" Set tab width to 4 characters
-set tabstop=4
-set shiftwidth=4
+" bells
+set noerrorbells                         " turn off audio bell
+set visualbell                           " leave on visual bell
 
-" wrap long lines
-set wrap
-" only split lines on whitespace, no broken words
-set linebreak
-
-"-------Set backup directories ----"
+" set backup directories
 set backupdir=~/.vim/backup
 set directory=~/.vim/swp
 set undodir=~/.vim/undo
 
-"----------Disable Arrows -----"         "Useful when getting the hang of using h j k l
-"inoremap <Up> <Nop>
-"inoremap <Down> <Nop>
-"inoremap <Right> <Nop>
-"inoremap <Left> <Nop>
-
-"----------Smart Pairs---------"
-""inoremap ( ()<Left>
-""inoremap [ []<Left>
-""inoremap { {}<Left>
-""inoremap " ""<Left>
-""inoremap ' ''<Left>
-"Move right in insert mode
-""inoremap ;; <Right>
-"inoremap ll <Right>
-
-"----------Buffers---------"
-"Fast save
+" easier save and quit
 nnoremap <leader>w :w<cr>
-"Fast quit
 nnoremap <leader>q :q<cr>
-"Easier escape key
-"inoremap jk <esc>
-"inoremap kj <esc>
-"inoremap ii <esc>
-inoremap <Tab> <esc>
-"Delete current buffer
+
+" line movement
+" normal mode
+nnoremap <C-j> :m .+1<CR>
+nnoremap <C-k> :m .-2<CR>
+" insert mode
+inoremap <C-j> <ESC>:m .+1<CR>gi
+inoremap <C-k> <ESC>:m .-2<CR>gi
+" visual mode
+"vnoremap <C-j> :m '>+1<CR>gv=gv
+"vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" buffers
+" delete current buffer
 nnoremap <leader>x :bd<CR>
-"List buffers and allow selection
+" list buffers and allow selection
 nnoremap <leader>b :ls<CR>:b<Space>
 "Change local directory to location of current open file in window
 "nnoremap <leader>cd :lcd %:h<CR>
-" Open files from working directory
+" open files from working directory
 nnoremap <leader>e :edit<Space>
 "nnoremap <leader>ee :edit<Space>
-" Open files located within the same dir in with the current file is edited
+" open files located within the same dir in with the current file is edited
 "nnoremap <leader>ew :edit <C-R>=expand("%:.:h") . "/"<CR>
-" Easy cycling between buffers
-nnoremap <silent> [b :bprevious<CR><Space>
-nnoremap <silent> ]b :bnext<CR><Space>
-nnoremap <silent> [B :bfirst<CR><Space>
-nnoremap <silent> ]B :blast<CR><Space>
+" easy cycling between buffers
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
-"----------Windows---------"
+" windows
 set splitbelow
 set splitright
+" fast window creation
 nnoremap <leader><Right> <C-w>v
 nnoremap <leader><Down> <C-w>s
-"make all windows equal size
+" make all windows equal size
 nnoremap <leader>= <C-w>=
-"increase height of window
+" increase height of window
 nnoremap <leader><Up> <C-w>5+
-"increase width of window
+" increase width of window
 nnoremap <leader><Left> <C-w>5>
-"Use arrows in normal mode to move between windows.
-"This makes me smile every time!
+" use arrows in normal mode to move between windows.
+" this makes me smile every time!
 nnoremap <Down> <c-w>j
 nnoremap <Up> <c-w>k
 nnoremap <Left> <c-w>h
 nnoremap <Right> <c-w>l
 
-"----------Tabs---------"
+" tabs
 nnoremap tn :tabnew<Space>
-" Easy cycling between tabs
+" easy cycling between tabs
 nnoremap <silent> [t :tabprev<CR><Space>
 nnoremap <silent> ]t :tabnext<CR><Space>
 nnoremap <silent> [T :tabfirst<CR><Space>
 nnoremap <silent> ]T :tablast<CR><Space>
 
-"-----------Color Scheme-------------"
-set background=dark
-"set background=light
-colorscheme solarized
-set t_CO=256                        "Make sure terminal uses 256 colors.
-
-"-----------Status-Line--------"
+" status line
 " visual indication of active window
 hi statusline ctermfg=red
 set laststatus=2                   "Make sure statusline displays on startup
@@ -124,41 +120,32 @@ set statusline+=[%P]               "Percentage through file
 set statusline+=[%l/%L:%v]         "Line/Length:Column
 set statusline+=[%{mode()}]        "Mode
 
-"-----------Searching----------"
+" search
 set hlsearch                            "Highlight search results
 let @/ = ""                             "But not when sourcing .vimrc
 set incsearch                           "Enable incremental search
 set ignorecase                          "Ignore case when searching
-"Simple search highlight removal
+" search highlight removal
 nmap <silent> <leader><space> :nohlsearch<cr>
 
-"----------netrw configuration----------"
+" netrw
+" open netrw
+nmap <leader>n :Explore<cr>
 " No banner by default - can be toggled using `I`
 "let g:netrw_banner=0
 " Tree list style by default - toggle options using `i`
 "let g:netrw_liststyle=3
 " Tree list size 30% when creates a split
 "let g:netrw_winsize=30
-"Open netrw
-nmap <leader>n :Explore<cr>
 "Open netrw in directory of the current file
 "nmap <leader>dc :Lexplore %:p:h<cr>
 "Open netrw in the current working directory
 "nmap <leader>dd :Lexplore<cr>
 "nnoremap <leader>r :Rexplore<CR>    "Return to explorer
 
-"-----------Mappings-----------"
-"Edit vimrc file
-nmap <leader>ev :tabedit $MYVIMRC<cr>
-"Source vimrc file
-nnoremap <leader>sv :so $MYVIMRC<CR>
-"-----------Auto-Commands-----------"
+" vimrc
+" edit vimrc
+nmap <leader>v :tabedit $MYVIMRC<cr>
+" source vimrc
+nnoremap <leader>s :so $MYVIMRC<CR>
 
-" Automatically source the Vimrc file on save
-" use the augroup to prevent commands piling up
-" if you do it too many times in one session
-" saving can take forever!
-"augroup autosourcing
-"	autocmd!
-"	autocmd BufWritePost vimrc source %
-"augroup END
