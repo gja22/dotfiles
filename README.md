@@ -47,7 +47,7 @@ Now modify vimrc (this is already in my default vimrc file):
 ```
 syntax enable
 set background=dark
-solorscheme solarized
+colorscheme solarized
 ```
 
 ## Vim Packages

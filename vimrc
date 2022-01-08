@@ -9,8 +9,8 @@ set encoding=utf8                        "Set utf8 as standard encoding
 set fileencoding=utf8                    "Set utf8 as standard encoding
 
 " color scheme
-colorscheme slate                        " prefer builtin schemes
-"set t_CO=256                             " ensure terminal uses 256 colors
+set background=dark  
+colorscheme solarized                     " need to clone solarized scheme first
 
 " display options
 set cursorline                           " highlight the current line
@@ -108,7 +108,7 @@ nnoremap <silent> ]T :tablast<CR><Space>
 
 " status line
 " visual indication of active window
-hi statusline ctermfg=red
+hi statusline ctermfg=DarkYellow
 set laststatus=2                   "Make sure statusline displays on startup
 "set statusline=[%{getcwd()}]       "Working directory
 set statusline=[%t]                "Filename without path
