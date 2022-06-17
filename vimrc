@@ -4,13 +4,15 @@
 set nocompatible                         "We want the latest Vim settings and options.
 filetype plugin on
 syntax enable
-let mapleader=" "                        "Default leader is '\' but space works better for me
+let mapleader=","
 set encoding=utf8                        "Set utf8 as standard encoding
 set fileencoding=utf8                    "Set utf8 as standard encoding
 
 " color scheme
-set background=dark  
-colorscheme solarized                     " need to clone solarized scheme first
+colorscheme tender
+"colorscheme slate
+"set background=dark
+"colorscheme solarized                     " need to clone solarized scheme first
 
 " display options
 set cursorline                           " highlight the current line
@@ -20,7 +22,7 @@ set wrap                                 " wrap long lines
 set linebreak                            " split on whitespace, no broken words
 set showmatch                            " show matching brackets
 set showmode                             " show INSERT, VISUAL, etc. mode
-set scrolloff=5                          " show at least 5 lines above/below
+set scrolloff=3                          " show at least 5 lines above/below
 
 " tabs and indenting
 set backspace=indent,eol,start           " make backspace behave like other editors
@@ -36,6 +38,9 @@ set lcs=tab:▸.,trail:~,nbsp:␣,eol:¬      " listchar format
 set nolist                               " hide listchars
 " toggle listchars
 nnoremap <leader>h :set list!<CR>
+
+" code folding
+set foldmethod=syntax
 
 " bells
 set noerrorbells                         " turn off audio bell
@@ -64,7 +69,7 @@ inoremap <C-k> <ESC>:m .-2<CR>gi
 " buffers
 " delete current buffer
 nnoremap <leader>x :bd<CR>
-" list buffers and allow selection
+"list buffers and allow selection
 nnoremap <leader>b :ls<CR>:b<Space>
 "Change local directory to location of current open file in window
 "nnoremap <leader>cd :lcd %:h<CR>
@@ -73,11 +78,6 @@ nnoremap <leader>e :edit<Space>
 "nnoremap <leader>ee :edit<Space>
 " open files located within the same dir in with the current file is edited
 "nnoremap <leader>ew :edit <C-R>=expand("%:.:h") . "/"<CR>
-" easy cycling between buffers
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
 
 " windows
 set splitbelow
@@ -92,7 +92,7 @@ nnoremap <leader><Up> <C-w>5+
 " increase width of window
 nnoremap <leader><Left> <C-w>5>
 " use arrows in normal mode to move between windows.
-" this makes me smile every time!
+" makes me smile every time!
 nnoremap <Down> <c-w>j
 nnoremap <Up> <c-w>k
 nnoremap <Left> <c-w>h
@@ -100,25 +100,22 @@ nnoremap <Right> <c-w>l
 
 " tabs
 nnoremap tn :tabnew<Space>
-" easy cycling between tabs
-nnoremap <silent> [t :tabprev<CR><Space>
-nnoremap <silent> ]t :tabnext<CR><Space>
-nnoremap <silent> [T :tabfirst<CR><Space>
-nnoremap <silent> ]T :tablast<CR><Space>
 
 " status line
+" now using airline, but keep this around for old times sake
 " visual indication of active window
-hi statusline ctermfg=DarkYellow
-set laststatus=2                   "Make sure statusline displays on startup
+"hi statusline ctermfg=DarkYellow
+"set laststatus=2                   "Make sure statusline displays on startup
 "set statusline=[%{getcwd()}]       "Working directory
-set statusline=[%t]                "Filename without path
-set statusline+=%m                 "Modified indicator
-set statusline+=%r                 "Readonly indicator
-set statusline+=%=                 "Right align the rest
-set statusline+=%y                 "Filetype
-set statusline+=[%P]               "Percentage through file
-set statusline+=[%l/%L:%v]         "Line/Length:Column
-set statusline+=[%{mode()}]        "Mode
+"set statusline=%{FugitiveStatusline()}
+"set statusline+=[%t]                "Filename without path
+"set statusline+=%m                 "Modified indicator
+"set statusline+=%r                 "Readonly indicator
+"set statusline+=%=                 "Right align the rest
+"set statusline+=%y                 "Filetype
+"set statusline+=[%P]               "Percentage through file
+"set statusline+=[%l/%L:%v]         "Line/Length:Column
+"set statusline+=[%{mode()}]        "Mode
 
 " search
 set hlsearch                            "Highlight search results
@@ -126,10 +123,16 @@ let @/ = ""                             "But not when sourcing .vimrc
 set incsearch                           "Enable incremental search
 set ignorecase                          "Ignore case when searching
 " search highlight removal
-nmap <silent> <leader><space> :nohlsearch<cr>
+nmap <silent> <leader>c :nohlsearch<cr>
 
-" netrw
-" open netrw
+" Airline plugin settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" CtrlP plugin settings
+nmap <leader>p :CtrlP<cr>
+
+" netrw builtin settings
 nmap <leader>n :Explore<cr>
 " No banner by default - can be toggled using `I`
 "let g:netrw_banner=0
