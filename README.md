@@ -1,29 +1,25 @@
 # dotfiles
 
 ## Installation
-Clone the repo to your desired location. I tend to place it in my home directory.
+Clone the repo to your desired location. I keep it in `~/gja22/dotfiles`.
 
-`cd`
+`cd ~/gja22`
 
 `git clone https://github.com/gja22/dotfiles.git`
-
-Which clones my dotfile repo into: `~/dotfiles`.
 
 ## Bash Configuration
 In your home directory run the following commands:
 
-`ln -s dotfiles/bash_profile .bash_profile`
+`ln -s gja22/dotfiles/bash_profile .bash_profile`
 
-`ln -s dotfiles/bashrc .bashrc`
-
-Where `dotfiles` is the location of the cloned dotfiles repo.
+`ln -s gja22/dotfiles/bashrc .bashrc`
 
 ## Vim Configuration
 A little setup for the first time on new machines:
 ```
 mkdir ~/.vim
 cd ~/.vim
-ln -s ~/dotfiles/vimrc vimrc
+ln -s ~/dotfiles/gja22/vimrc vimrc
 mkdir backup
 mkdir swp
 mkdir undo
@@ -31,23 +27,22 @@ mkdir colors
 ```
 
 ### Vim Color Schemes
-I use the solarized color scheme.
+I like the tender color scheme.
 
-To install first clone the git repo to a location of your preference.
+Clone the repo to your preferred location.
 
-`git clone git://github.com/altercation/vim-colors-solarized.git`
+`git clone git://github.com/jacoborus/tender.vim.git`
 
 Then copy the color file to the right Vim directory.
 
-`cd vim-colors-solarized/colors`\
-`cp solarized.vim ~/.vim/colors/.`
+`cd tender.vim/colors`\
+`cp tender.vim ~/.vim/colors/.`
 
 Now modify vimrc (this is already in my default vimrc file):
 
 ```
 syntax enable
-set background=dark
-colorscheme solarized
+colorscheme tender
 ```
 
 ## Vim Packages
