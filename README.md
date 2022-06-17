@@ -43,6 +43,12 @@ syntax enable
 colorscheme tender
 ```
 
+There is also a port of the tender color scheme to iTerm2.
+
+`git clone https://github.com/tomwei7/tender-iterm2`
+
+Don't you just love open source!
+
 ## Vim Packages
 
 
