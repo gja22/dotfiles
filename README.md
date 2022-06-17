@@ -3,19 +3,17 @@
 ## Installation
 Clone the repo to your desired location. I keep it in `~/gja22/dotfiles`.
 
-`cd ~/gja22`
-
+`cd ~/gja22`\
 `git clone https://github.com/gja22/dotfiles.git`
 
 ## Bash Configuration
 In your home directory run the following commands:
 
-`ln -s gja22/dotfiles/bash_profile .bash_profile`
-
+`ln -s gja22/dotfiles/bash_profile .bash_profile`\
 `ln -s gja22/dotfiles/bashrc .bashrc`
 
 ## Vim Configuration
-A little setup for the first time on new machines:
+A little setup for new machines:
 ```
 mkdir ~/.vim
 cd ~/.vim
