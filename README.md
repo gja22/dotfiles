@@ -53,3 +53,5 @@ Don't you just love open source!
 
 
 
+## License
+Dotfiles is released under the [MIT License](https://opensource.org/licenses/MIT).
