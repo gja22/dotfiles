@@ -17,7 +17,7 @@ A little setup for new machines:
 ```
 mkdir ~/.vim
 cd ~/.vim
-ln -s ~/dotfiles/gja22/vimrc vimrc
+ln -s ~/gja22/dotfiles/vimrc vimrc
 mkdir backup
 mkdir swp
 mkdir undo
