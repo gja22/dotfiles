@@ -4,9 +4,20 @@
 set nocompatible                         "We want the latest Vim settings and options.
 filetype plugin on
 syntax enable
-let mapleader=","
 set encoding=utf8                        "Set utf8 as standard encoding
 set fileencoding=utf8                    "Set utf8 as standard encoding
+
+" leader
+" The downside of `,` for my leader is that `,` is useful
+" with the f command to go back to the previous character
+" if you get a little over zealous with the next char jumps
+" using `;`. I can live with this for now.
+" I have tried finding another key to map to `,` but nothing
+" has worked well.
+" I have tried <space> as my leader which is great but does 
+" not repond to `showcmd`. Pondering if I really need that.
+let mapleader=","
+" nnoremap X :normal!,<cr>
 
 colorscheme tender
 
@@ -55,7 +66,7 @@ set undodir=~/.vim/undo
 
 " easier save and quit
 nnoremap <leader>w :w<cr>
-" nnoremap <leader>q :q<cr>
+nnoremap <leader>q :q<cr>
 
 " line movement
 " normal mode
@@ -117,6 +128,11 @@ set statusline+=%y                 "Filetype
 set statusline+=[%l/%L:%v]         "Line/Length:Column
 
 " search
+" To support more contrast in the display I updated the
+" tender colorscheme with these modifications.
+" ctermfg=205 is hot pink
+" IncSearch ctermfg=205
+" Search ctermfg=205
 set hlsearch                            "Highlight search results
 let @/ = ""                             "But not when sourcing .vimrc
 set incsearch                           "Enable incremental search
@@ -129,21 +145,16 @@ nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
 " Easymotion plugin settings
-nnoremap <leader>f <plug>(easymotion-bd-f)
+" nnoremap does not work for plugins.
+" I don't understand why just yet, on my todo list.
+nmap <leader>f <plug>(easymotion-bd-f)
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
-" netrw builtin settings
-"nmap <leader>n :Explore<cr>
-" No banner by default - can be toggled using `I`
-"let g:netrw_banner=0
-" Tree list style by default - toggle options using `i`
-"let g:netrw_liststyle=3
-" Tree list size 30% when creates a split
-"let g:netrw_winsize=30
-"Open netrw in directory of the current file
-"nmap <leader>dc :Lexplore %:p:h<cr>
-"Open netrw in the current working directory
-"nmap <leader>dd :Lexplore<cr>
-"nnoremap <leader>r :Rexplore<CR>    "Return to explorer
+" Vinegar plugin settings
+" Vinegar uses `-` to invoke which I actually used
+" so I map what `-` did to `\`. This actually works better
+" because they are above and below each other on the keyboard
+nnoremap \ :normal! -<cr>
 
 " vimrc
 " edit vimrc
