@@ -7,17 +7,15 @@ syntax enable
 set encoding=utf8                        "Set utf8 as standard encoding
 set fileencoding=utf8                    "Set utf8 as standard encoding
 
-" leader
-" The downside of `,` for my leader is that `,` is useful
-" with the f command to go back to the previous character
-" if you get a little over zealous with the next char jumps
-" using `;`. I can live with this for now.
-" I have tried finding another key to map to `,` but nothing
-" has worked well.
-" I have tried <space> as my leader which is great but does 
-" not repond to `showcmd`. Pondering if I really need that.
+" Leader setting and notes
+" One minor downside of using `,` for your leader is that
+" it is useful for jumping to the previous character using
+" the `f` command. This still works, but you have to wait for
+" the delay as Vim waits for the character following the leader.
+" This is a minor annoyance that I can live with.
+" I have also used <space> as my leader which is great but you 
+" can't see it when `showcmd` is set. Pondering if I really need that.
 let mapleader=","
-" nnoremap X :normal!,<cr>
 
 colorscheme tender
 
