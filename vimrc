@@ -113,17 +113,19 @@ nnoremap <Right> <c-w>l
 "nnoremap tn :tabnew<Space>
 
 " status line
-hi statusline ctermfg=DarkYellow
-set laststatus=2                   "Make sure statusline displays on startup
-set statusline=[%{mode()}]        "Mode
-set statusline+=%{FugitiveStatusline()}
-set statusline+=%f                 "Filename with project path
-set statusline+=%m                 "Modified indicator
-set statusline+=%r                 "Readonly indicator
-set statusline+=%=                 "Right align the rest
-set statusline+=%y                 "Filetype
-"set statusline+=[%P]               "Percentage through file
-set statusline+=[%l/%L:%v]         "Line/Length:Column
+" To support easier identification of active window
+" I updated the tender colorschems with these changes.
+" StatusLine ctermfg=231 ctermbg=26 cterm=NONE
+" StatusLineNC ctermfg=231 ctermbg=238 cterm=NONE
+set laststatus=2                        "Ensure statusline displays
+set statusline=[%{mode()}]              "Mode
+set statusline+=%f                      "Filename with project path
+set statusline+=%m                      "Modified indicator
+set statusline+=%r                      "Readonly indicator
+set statusline+=%{FugitiveStatusline()} "Git branch
+set statusline+=%=                      "Right align the rest
+set statusline+=%y                      "Filetype
+set statusline+=%l/%L:%v                "Line/Length:Column
 
 " search
 " To support more contrast in the display I updated the
