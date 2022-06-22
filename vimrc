@@ -143,8 +143,7 @@ nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
 " Easymotion plugin settings
-" nnoremap does not work for plugins.
-" I don't understand why just yet, on my todo list.
+let g:EasyMotion_smartcase = 1
 nmap <leader>f <plug>(easymotion-bd-f)
 nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
