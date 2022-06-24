@@ -21,14 +21,7 @@ let mapleader=","
 " }}}
 
 " Syntax highlighting and colorscheme ----------{{{
-" To support more contrast I updated these modifications to tender.
-" 201 is a bright pink and 219 a more muted pink
-" NonText ctermfg=201
-" SpecialKey ctermfg=201
-" IncSearch ctermfg=201 ctermbg=0 cterm=Bold,reverse
-" Search ctermfg=219 ctermbg=0 cterm=Bold,reverse
-" StatusLine ctermfg=231 ctermbg=26 cterm=NONE
-" StatusLineNC ctermfg=231 ctermbg=238 cterm=NONE
+" This is my own cloned version of tender with some minor tweaks.
 syntax enable
 colorscheme tender
 " }}}
