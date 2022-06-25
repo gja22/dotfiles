@@ -3,20 +3,13 @@
 "
 
 " basics ----------{{{
-set nocompatible                         "We want the latest Vim settings and options.
+set nocompatible                         " We want the latest Vim settings and options.
 filetype plugin on
-set encoding=utf8                        "Set utf8 as standard encoding
-set fileencoding=utf8                    "Set utf8 as standard encoding
+set encoding=utf8                        " Set utf8 as standard encoding
+set fileencoding=utf8                    " Set utf8 as standard encoding
 " }}}
 
 " Leader ----------{{{ 
-" One minor downside of using `,` for your leader is that
-" it is useful for jumping to the previous character using
-" the `f` command. This still works, but you have to wait for
-" the delay as Vim waits for the character following the leader.
-" This is a minor annoyance that I can live with.
-" I have also used <space> as my leader which is great but you 
-" can't see it when `showcmd` is set. Pondering if I really need that.
 let mapleader=","
 " }}}
 
@@ -29,11 +22,13 @@ colorscheme tender
 " display options ----------{{{
 set cursorline                           " highlight the current line
 set number                               " show line numbers
-set norelativenumber                     " no relative line numbers
+" easy switching to relative numbering
+nnoremap <leader>r :set relativenumber!<CR>
 set wrap                                 " wrap long lines
 set linebreak                            " split on whitespace, no broken words
 set showmatch                            " show matching brackets
-set noshowmode                           " show INSERT, VISUAL, etc. mode
+set showmode                             " show INSERT, VISUAL, etc. mode in command line
+set showcmd                              " show active command in command line
 set scrolloff=3                          " lines above/below
 " }}}
 
@@ -56,7 +51,7 @@ nnoremap <leader>h :set list!<CR>
 " }}}
 
 " code folding ----------{{{
-" set foldmethod=syntax
+" easy toggling of folded sections
 nnoremap <space> za
 " }}}
 
@@ -77,8 +72,6 @@ nnoremap <leader>q :q<cr>
 " }}}
 
 " buffers ----------{{{
-" delete current buffer
-nnoremap <leader>x :bd<CR>
 " list buffers and allow selection
 nnoremap <leader>l :ls<CR>:b<Space>
 " Change local directory to location of current open file in window
@@ -96,6 +89,8 @@ set splitright
 " fast window creation
 nnoremap <leader><Right> <C-w>v
 nnoremap <leader><Down> <C-w>s
+" close current window
+nnoremap <leader>x :close<CR>
 " make all windows equal size
 nnoremap <leader>= <C-w>=
 " increase height of window
