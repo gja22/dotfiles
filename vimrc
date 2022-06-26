@@ -119,6 +119,7 @@ set statusline+=%{FugitiveStatusline()} "Git branch
 set statusline+=%=                      "Right align the rest
 set statusline+=%y                      "Filetype
 set statusline+=%l/%L:%v                "Line/Length:Column
+set updatetime=100                      " Update status line every 100ms, default it 800ms
 " }}}
 
 " search ----------{{{
@@ -133,6 +134,16 @@ nnoremap <silent> <leader>c :nohlsearch<cr>
 " CtrlP plugin ----------{{{
 nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
+" }}}
+
+" vim-go plugin ----------{{{
+let g:go_auto_type_info = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
 " }}}
 
 " Easymotion plugin ----------{{{ 
