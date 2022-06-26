@@ -90,7 +90,9 @@ set splitright
 nnoremap <leader><Right> <C-w>v
 nnoremap <leader><Down> <C-w>s
 " close current window
-nnoremap <leader>x :close<CR>
+nnoremap <leader>c :close<CR>
+" close other windows
+nnoremap <leader>o :only<CR>
 " make all windows equal size
 nnoremap <leader>= <C-w>=
 " increase height of window
@@ -128,7 +130,7 @@ let @/ = ""                             "But not when sourcing .vimrc
 set incsearch                           "Enable incremental search
 set ignorecase                          "Ignore case when searching
 " search highlight removal
-nnoremap <silent> <leader>c :nohlsearch<cr>
+nnoremap <silent> <leader><space> :nohlsearch<cr>
 " }}}
 
 " CtrlP plugin ----------{{{
