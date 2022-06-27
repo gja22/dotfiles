@@ -1,7 +1,6 @@
 "-----Vim Configuration File-----
 " Geoff Apps
 "
-
 " basics ----------{{{
 set nocompatible                         " We want the latest Vim settings and options.
 filetype plugin on
@@ -17,6 +16,10 @@ let mapleader=","
 " This is my own cloned version of tender with some minor tweaks.
 syntax enable
 colorscheme tender
+nnoremap <leader>tp :colorscheme PaperColor<CR>
+nnoremap <leader>ts :colorscheme solarized8<CR>
+nnoremap <leader>tg :colorscheme gruvbox<CR>
+nnoremap <leader>tt :colorscheme tender<CR>
 " }}}
 
 " display options ----------{{{
@@ -162,10 +165,13 @@ nnoremap \ :normal! -<cr>
 " }}}
 
 " vimrc ----------{{{
+" Use the following command to see all commands mapped to ,
+" This is useful when youo find clashes or delays etc.
+" :map ,
 " edit vimrc
-nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+nnoremap <leader>v :tabedit $MYVIMRC<cr>
 " source vimrc
-nnoremap <leader>sv :so $MYVIMRC<CR>
+nnoremap <leader>u :so $MYVIMRC<CR>
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
