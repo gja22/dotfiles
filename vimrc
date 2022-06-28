@@ -15,7 +15,7 @@ let mapleader=","
 " Syntax highlighting and colorscheme ----------{{{
 " This is my own cloned version of tender with some minor tweaks.
 syntax enable
-colorscheme tender
+colorscheme solarized8
 nnoremap <leader>tp :colorscheme PaperColor<CR>
 nnoremap <leader>ts :colorscheme solarized8<CR>
 nnoremap <leader>tg :colorscheme gruvbox<CR>
