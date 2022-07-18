@@ -2,47 +2,46 @@
 " Geoff Apps
 "
 " basics ----------{{{
-set nocompatible                         " We want the latest Vim settings and options.
+set nocompatible                         " Latest Vim features
 filetype plugin on
 set encoding=utf8                        " Set utf8 as standard encoding
 set fileencoding=utf8                    " Set utf8 as standard encoding
 " }}}
 
 " Leader ----------{{{ 
-let mapleader=","
+let mapleader=" "
 " }}}
 
 " Syntax highlighting and colorscheme ----------{{{
-" This is my own cloned version of tender with some minor tweaks.
 syntax enable
-colorscheme solarized8
-nnoremap <leader>tp :colorscheme PaperColor<CR>
-nnoremap <leader>ts :colorscheme solarized8<CR>
-nnoremap <leader>tg :colorscheme gruvbox<CR>
-nnoremap <leader>tt :colorscheme tender<CR>
+colorscheme gruvbox
+set background=dark
 " }}}
 
 " display options ----------{{{
-set cursorline                           " highlight the current line
-set number                               " show line numbers
-" easy switching to relative numbering
+set cursorline                 " highlight the current line
+set number                     " show line numbers
+set relativenumber             " relative numbering
+set colorcolumn=80             " visually indicate line width
+set signcolumn=yes             " always show sign column (errors etc.)
+" easy toggling of relative numbering
 nnoremap <leader>r :set relativenumber!<CR>
-set wrap                                 " wrap long lines
-set linebreak                            " split on whitespace, no broken words
-set showmatch                            " show matching brackets
-set showmode                             " show INSERT, VISUAL, etc. mode in command line
-set showcmd                              " show active command in command line
-set scrolloff=3                          " lines above/below
+set wrap                       " wrap long lines
+set linebreak                  " split on whitespace, no broken words
+set showmatch                  " show matching brackets
+set showmode                   " show INSERT, VISUAL, etc. mode in command line
+set showcmd                    " show active command in command line
+set scrolloff=3                " lines to keep above/below when scrolling
 " }}}
 
 " tabs and indenting ----------{{{
-set backspace=indent,eol,start           " make backspace behave like other editors
-set smarttab                             " better backspace and tab functionality
-set autoindent                           " auto indenting
-set smartindent                          " smart indenting
-set expandtab                            " spaces instead of tabs
-set tabstop=2                            " 2 spaces for tabs
-set shiftwidth=2                         " 2 spaces for indentation
+set backspace=indent,eol,start       " make backspace behave like other editors
+set smarttab                         " better backspace and tab functionality
+set autoindent                       " auto indenting
+set smartindent                      " smart indenting
+set expandtab                        " spaces instead of tabs
+set tabstop=2                        " 2 spaces for tabs
+set shiftwidth=2                     " 2 spaces for indentation
 " }}}
 
 " listchar options ----------{{{ 
@@ -53,9 +52,15 @@ set nolist
 nnoremap <leader>h :set list!<CR>
 " }}}
 
+" writing options ----------{{{ 
+" redraw long/short lines onto muliple lines 
+nnoremap <leader>d gqip<CR>
+" }}}
+
 " code folding ----------{{{
 " easy toggling of folded sections
-nnoremap <space> za
+" clashes with easymotion, still figuring out best folding shortcuts
+" nnoremap <leader><space> za
 " }}}
 
 " warnings ----------{{{
@@ -72,11 +77,13 @@ set undodir=~/.vim/undo
 " save and quit ----------{{{
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
+set hidden                    " don't force buffer saves
 " }}}
 
 " buffers ----------{{{
 " list buffers and allow selection
-nnoremap <leader>l :ls<CR>:b<Space>
+" not sure that I still need this now that I am using ctrlp
+" nnoremap <leader>l :ls<CR>:b<Space>
 " Change local directory to location of current open file in window
 " nnoremap <leader>cd :lcd %:h<CR>
 " open files from working directory
@@ -115,25 +122,43 @@ nnoremap <Right> <c-w>l
 " }}}
 
 " status line ----------{{{
-set laststatus=2                        "Ensure statusline displays
+set laststatus=2                        "Always display the statusline (0=never, 1=only when multiple windows)
+set updatetime=100                      "Update status line every 100ms, default is 800ms
 set statusline=[%{mode()}]              "Mode
 set statusline+=%f                      "Filename with project path
 set statusline+=%m                      "Modified indicator
 set statusline+=%r                      "Readonly indicator
 set statusline+=%{FugitiveStatusline()} "Git branch
 set statusline+=%=                      "Right align the rest
+set statusline+=%{LastSearchCount()}    "Search details
 set statusline+=%y                      "Filetype
 set statusline+=%l/%L:%v                "Line/Length:Column
-set updatetime=100                      " Update status line every 100ms, default it 800ms
 " }}}
 
 " search ----------{{{
-set hlsearch                            "Highlight search results
-let @/ = ""                             "But not when sourcing .vimrc
-set incsearch                           "Enable incremental search
-set ignorecase                          "Ignore case when searching
+set incsearch                           " enable incremental search
+set ignorecase                          " ignore case when searching
+set smartcase                           " ignore case when searching
+set shortmess-=S                        " show counts when searching
 " search highlight removal
-nnoremap <silent> <leader><space> :nohlsearch<cr>
+" nnoremap <leader><space> :nohlsearch<cr>
+" search details for statusline, from :help searchcount()
+function! LastSearchCount() abort
+  let result = searchcount(#{recompute: 0})
+  if empty(result)
+    return ''
+  endif
+  if result.incomplete ==# 1     " timed out
+    return printf(' /%s [?/??]X', @/)
+  elseif result.incomplete ==# 2 " max count exceeded
+    if result.total > result.maxcount &&  result.current > result.maxcount
+      return printf(' /%s [>%d/>%d]Y', @/, result.current, result.total)
+    elseif result.total > result.maxcount
+      return printf(' /%s [%d/>%d]Z', @/, result.current, result.total)
+    endif
+  endif
+  return printf('(/%s %d/%d)', @/, result.current, result.total)
+endfunction
 " }}}
 
 " CtrlP plugin ----------{{{
@@ -142,6 +167,9 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 " }}}
 
 " vim-go plugin ----------{{{
+" easy compiling
+nnoremap <leader>gb :GoBuild<cr>
+" highlight everything
 let g:go_auto_type_info = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
