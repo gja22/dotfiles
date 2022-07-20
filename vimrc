@@ -207,7 +207,7 @@ function! ZettelGen(type)
   endif
 endfunction
 " map call
-nnoremap <leader>zm :call ZettelGen('msg')<CR>
+nnoremap <leader>zn :call ZettelGen('msg')<CR>
 " }}}
 
 " vimrc ----------{{{
