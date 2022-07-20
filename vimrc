@@ -199,7 +199,12 @@ function! ZettelGen(type)
   call inputrestore()
   let command = 'zgen msg ' . '"' . name . '"'
   let file = system(command)
-  execute "e ".file
+  " Only open file if no error
+  if v:shell_error != 0
+    echom ">>>ERROR:" . file . "<<<"
+  else
+    execute "e ".file
+  endif
 endfunction
 " map call
 nnoremap <leader>zm :call ZettelGen('msg')<CR>
