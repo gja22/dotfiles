@@ -21,11 +21,11 @@ set background=dark
 " display options ----------{{{
 set cursorline                 " highlight the current line
 set number                     " show line numbers
-set relativenumber             " relative numbering
 set colorcolumn=80             " visually indicate line width
 set signcolumn=yes             " always show sign column (errors etc.)
-" easy toggling of relative numbering
+" easy toggling of numbering
 nnoremap <leader>r :set relativenumber!<CR>
+nnoremap <leader>n :set number!<CR>
 set wrap                       " wrap long lines
 set linebreak                  " split on whitespace, no broken words
 set showmatch                  " show matching brackets
@@ -46,7 +46,7 @@ set shiftwidth=2                     " 2 spaces for indentation
 
 " listchar options ----------{{{ 
 set showbreak=↪
-set lcs=tab:▸.,trail:•,nbsp:␣,eol:↲,extends:⟩,precedes:⟨
+set lcs=tab:».,trail:•,nbsp:␣,eol:↲,extends:⟩,precedes:⟨
 set nolist
 " toggle listchars, mnemonic h is for hidden
 nnoremap <leader>h :set list!<CR>
@@ -190,6 +190,19 @@ nmap <Leader>s <Plug>(easymotion-overwin-f2)
 " so I map what `-` did to `\`. This actually works better
 " because they are above and below each other on the keyboard
 nnoremap \ :normal! -<cr>
+" }}}
+
+" Zettel ----------{{{
+function! ZettelGen(type)
+  call inputsave()
+  let name = input('Enter title: ')
+  call inputrestore()
+  let command = 'zgen msg ' . '"' . name . '"'
+  let file = system(command)
+  execute "e ".file
+endfunction
+" map call
+nnoremap <leader>zm :call ZettleGen('msg')<CR>
 " }}}
 
 " vimrc ----------{{{
