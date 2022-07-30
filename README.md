@@ -1,57 +1,77 @@
 # dotfiles
 
+My collection of configuration files.
+
 ## Installation
+
 Clone the repo to your desired location. I keep it in `~/gja22/dotfiles`.
 
+`mkdir ~/gja22`\
 `cd ~/gja22`\
 `git clone https://github.com/gja22/dotfiles.git`
 
 ## Bash Configuration
+
 In your home directory run the following commands:
 
 `ln -s gja22/dotfiles/bash_profile .bash_profile`\
 `ln -s gja22/dotfiles/bashrc .bashrc`
 
 ## Vim Configuration
+
 A little setup for new machines:
+
 ```
 mkdir ~/.vim
 cd ~/.vim
 ln -s ~/gja22/dotfiles/vimrc vimrc
 mkdir backup
+mkdir colors
+mkdir pack/plugins/start
 mkdir swp
 mkdir undo
-mkdir colors
 ```
 
 ### Vim Color Schemes
-I like the tender color scheme.
 
-Clone the repo to your preferred location.
+I use the following folder as a holding area for color themes:
 
-`git clone git://github.com/jacoborus/tender.vim.git`
+`mkdir ~/gja22/vim-color-schemes`
 
-Then copy the color file to the right Vim directory.
+Into which I clone color schemes (gruvbox is my current favorite):
 
-`cd tender.vim/colors`\
-`cp tender.vim ~/.vim/colors/.`
+`cd ~/gja22/vim-color-schemes`\
+`git clone https://github.com/gruvbox-community/gruvbox.git`
+
+And then copy the color theme to the Vim config directory:
+
+`cd ~/gja22/vim-color-schemes/gruvbox`\
+`cp gruvbox.vim ~/.vim/colors/.`
 
 Now modify vimrc (this is already in my default vimrc file):
 
 ```
 syntax enable
-colorscheme tender
+colorscheme gruvbox
 ```
 
-There is also a port of the tender color scheme to iTerm2.
+### Vim Packages
 
-`git clone https://github.com/tomwei7/tender-iterm2`
+Since Vim8 I have not used a package manager for Vim. I prefer to just clone
+packages directly from GitHub. Here is an example:
 
-Don't you just love open source!
+`cd ~/.vim/pack/plugins/start`\
+`git clone https://github.com/tpope/vim-commentary.git`
 
-## Vim Packages
+You can read about the plugins I like
+[here](https://www.gja22.com/vim-plugins). 
 
+## tmux
 
+`mkdir ~/.config/tmux`\
+`cd ~/.config/tmux`\
+`ln -s ~/gja22/dotfiles/tmux.conf tmux.conf`
 
 ## License
+
 Dotfiles is released under the [MIT License](https://opensource.org/licenses/MIT).
