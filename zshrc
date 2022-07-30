@@ -92,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 
 #alias python=/usr/local/bin/python3
 alias path='echo $PATH | tr ":" "\n"'
+alias g22w='~/gja22/config/tmux-gja22-web'
 
 export PATH=$HOME/bin:~/go/bin:$PATH
 # export PATH=$HOME/bin:/usr/local/bin:$PATH

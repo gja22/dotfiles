@@ -68,6 +68,9 @@ You can read about the plugins I like
 
 ## tmux
 
+tmux configuration can live in `~/.tmux.conf` or `~/.config/tmux/tmux.conf`. I
+prefer the later as it keeps all the config a little cleaner.
+
 `mkdir ~/.config/tmux`\
 `cd ~/.config/tmux`\
 `ln -s ~/gja22/dotfiles/tmux.conf tmux.conf`
