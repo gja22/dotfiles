@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#
+# Create and/or launch tmux session for projectx
+#
+# replace projectx with your desired session name
+# update the base directory of the project
+# window and pane selection assumes tmux configuration
+# has been modifed to start window/pane numering from one
+
+# Check if session exists
+tmux has-session -t projectx
+if [ $? != 0 ]
+then
+
+# Change to base directory of this project
+cd ~/gja22/projectx
+
+# Create doco tmux session
+tmux new-session -s projectx -n editor -d
+
+# Fire up vim
+tmux send-keys -t projectx 'vim' C-m
+tmux send-keys -t projectx '-' C-m
+
+# Add new window
+tmux new-window -n terminal -t projectx
+tmux send-keys -t projectx 'gst' C-m
+
+# split right
+tmux split-window -h -t projectx 
+
+# split below
+tmux split-window -v -t projectx 
+# Replace the hugo command with what you want to execute
+tmux send-keys -t projectx 'hugo server' C-m
+
+# Select pane for the console window
+tmux select-pane -t 2
+
+# Select initial window and pane
+tmux select-window -t 1
+tmux select-pane -t 1
+
+# End if
+fi
+
+# Start tmux and attach to the session
+tmux attach -t projectx
