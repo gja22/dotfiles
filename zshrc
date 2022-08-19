@@ -95,6 +95,7 @@ alias path='echo $PATH | tr ":" "\n"'
 alias tgw='~/gja22/config/tmux-sessions/tmux-gja22-web'
 alias tpl='~/gja22/config/tmux-sessions/tmux-proglog'
 alias tcon='~/gja22/config/tmux-sessions/tmux-console'
+alias tlc='~/gja22/config/tmux-sessions/tmux-leetcode'
 
 export PATH=$HOME/bin:~/go/bin:$PATH
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
