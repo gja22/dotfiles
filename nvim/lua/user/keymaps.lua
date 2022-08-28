@@ -45,10 +45,6 @@ keymap("n", "<Down>", "<C-w>j", opts)
 keymap("n", "<Up>", "<C-w>k", opts)
 keymap("n", "<Right>", "<C-w>l", opts)
 
--- Navigate buffers
---keymap("n", "<S-l>", ":bnext<CR>", opts)
---keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
 -- Clear search highlighting
 keymap("n", "<leader><Space>", ":nohlsearch<CR>", opts)
 

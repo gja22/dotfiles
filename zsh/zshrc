@@ -94,6 +94,7 @@ source $ZSH/oh-my-zsh.sh
 alias path='echo $PATH | tr ":" "\n"'
 alias tgw='~/gja22/config/tmux-sessions/tmux-gja22-web'
 alias tpl='~/gja22/config/tmux-sessions/tmux-proglog'
+alias tdot='~/gja22/config/tmux-sessions/tmux-dotfiles'
 alias tcon='~/gja22/config/tmux-sessions/tmux-console'
 alias tlc='~/gja22/config/tmux-sessions/tmux-leetcode'
 
