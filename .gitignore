@@ -20,3 +20,7 @@
 
 # Hugo Public Site
 public/
+
+# nvim package manager stuff
+plugin/
+
