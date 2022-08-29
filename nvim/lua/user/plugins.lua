@@ -44,8 +44,6 @@ return packer.startup(function(use)
   -- use { "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" }
   -- use { "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" }
 
-
-
   -- My plugins here
   use { "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" } -- Have packer manage itself
   use { "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" } -- Useful lua functions used by lots of plugins
@@ -67,8 +65,8 @@ return packer.startup(function(use)
   use { "tpope/vim-fugitive" }
 
   -- Colorschemes
-  use { "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" }
-  use { "lunarvim/darkplus.nvim", commit = "2584cdeefc078351a79073322eb7f14d7fbb1835" }
+  use { "folke/tokyonight.nvim" }
+  use { "lunarvim/darkplus.nvim" }
   use { "gruvbox-community/gruvbox" }
 
   -- cmp plugins
