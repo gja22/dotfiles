@@ -69,6 +69,7 @@ You can read about the plugins I like
 ## Neovim Configuration
 
 ```
+cd ~/.config/
 ln -s ~/gja22/dotfiles/nvim nvim
 ```
 

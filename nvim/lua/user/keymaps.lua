@@ -25,6 +25,9 @@ keymap("n", "<leader>q", ":q<CR>", opts)
 keymap("n", "<leader>r", ":set relativenumber!<CR>", opts)
 keymap("n", "<leader>n", ":set number!<CR>", opts)
 
+-- Toggle listchars
+keymap("n", "<leader>h", ":set list!<CR>", opts)
+
 -- Windows
 -- fast window creation
 keymap("n", "<leader><Right>", "<C-w>v", opts)
@@ -47,6 +50,10 @@ keymap("n", "<Right>", "<C-w>l", opts)
 
 -- Clear search highlighting
 keymap("n", "<leader><Space>", ":nohlsearch<CR>", opts)
+
+-- Writing
+-- Redraw long lines to stay within width
+keymap("n", "<leader>d", "gqip", opts)
 
 -- Close buffers
 --keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
