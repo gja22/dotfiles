@@ -50,7 +50,11 @@ lualine.setup {
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch" },
-    lualine_c = { "filename" },
+    lualine_c = { { "filename",
+                    file_status = true,
+                    path = 1 -- 0=filename, 1=rel path, 2=abs path
+                  }
+                },
     lualine_x = { diff, "encoding", filetype },
     lualine_y = { location },
     lualine_z = { "progress" },
