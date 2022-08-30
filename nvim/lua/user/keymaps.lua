@@ -62,13 +62,12 @@ keymap("n", "<leader>d", "gqip", opts)
 --keymap("v", "p", '"_dP', opts)
 
 -- INSERT MODE MAPPINGS --
--- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+-- keymap("v", "<", "<gv", opts)
+-- keymap("v", ">", ">gv", opts)
 
 -- PLUGIN MAPPINGS --
 
