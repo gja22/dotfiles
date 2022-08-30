@@ -23,8 +23,13 @@ vim.opt.showcmd = true                          -- show active command on the co
 vim.opt.scrolloff = 3                           -- lines above/below when scrolling
 vim.opt.sidescrolloff = 3
 vim.opt.cmdheight = 2                           -- more space for displaying messages
--- can not get lishchars working
-vim.opt.lcs = { tab = '+', trail = '+', nbsp = '+', eol = '⤶', extends = '+', precedes = '+' }
+vim.opt.listchars = {                           -- listchars
+  eol = '↵',
+  tab = '» ',
+  nbsp = '␣',
+  trail = '•',
+  extends = '⟩',
+  precedes = '⟨' }
 
 -- Backup
 vim.opt.swapfile = false                        -- no swapfile
