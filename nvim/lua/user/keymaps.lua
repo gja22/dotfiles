@@ -51,6 +51,11 @@ keymap("n", "<Right>", "<C-w>l", opts)
 -- Clear search highlighting
 keymap("n", "<leader><Space>", ":nohlsearch<CR>", opts)
 
+-- Navigation
+-- move cursor line to center of screen when scrolling down and up
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
 -- Writing
 -- Redraw long lines to stay within width
 keymap("n", "<leader>d", "gqip", opts)
@@ -76,10 +81,10 @@ keymap("i", "jk", "<ESC>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
+-- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 
 -- Git
 --keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

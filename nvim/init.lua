@@ -1,7 +1,13 @@
--- Base nvim configuration file
+-- nvim configuration
+--
 -- Inspired by:
 --   https://github.com/LunarVim/nvim-basic-ide
---   https://github.com/tjdevries/config_manager/tree/master/xdg_config/nvim
+--   https://github.com/tjdevries/config_manager
+--   https://github.com/ThePrimeagen/.dotfiles
+--
+-- All configuration files are a mess.
+-- Mine is no different.
+-- Wander here at your own risk!
 
 require "user.options"
 require "user.keymaps"
