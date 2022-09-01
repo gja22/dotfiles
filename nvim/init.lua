@@ -1,5 +1,7 @@
 -- Base nvim configuration file
--- Inspired by https://github.com/LunarVim/nvim-basic-ide
+-- Inspired by:
+--   https://github.com/LunarVim/nvim-basic-ide
+--   https://github.com/tjdevries/config_manager/tree/master/xdg_config/nvim
 
 require "user.options"
 require "user.keymaps"
@@ -15,10 +17,10 @@ require "user.gitsigns"
 --require "user.nvim-tree"
 --require "user.bufferline"    -- tab like bufferline at the top
 require "user.lualine"       -- status line   
--- require "user.toggleterm"
-require "user.project"
+--require "user.toggleterm"
+--require "user.project"
 --require "user.impatient"
-require "user.illuminate"
+-- require "user.illuminate"
 require "user.indentline"
 --require "user.alpha"
 require "user.lsp"

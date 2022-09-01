@@ -22,9 +22,9 @@ vim.opt.showmode = true                         -- show INSERT, VISUAL, etc. mod
 vim.opt.showcmd = true                          -- show active command on the command line
 vim.opt.scrolloff = 3                           -- lines above/below when scrolling
 vim.opt.sidescrolloff = 3
-vim.opt.cmdheight = 2                           -- more space for displaying messages
+vim.opt.cmdheight = 1                           -- space for displaying messages
 vim.opt.listchars = {                           -- listchars
-  eol = '↵',
+  eol = '↲',
   tab = '» ',
   nbsp = '␣',
   trail = '•',
@@ -63,10 +63,10 @@ vim.opt.splitright = true                       -- force all vertical splits to 
 
 
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
-vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+--vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
-vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
+--vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10                          -- pop up menu height
 vim.opt.showtabline = 0                         -- always show tabs
 vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
@@ -76,7 +76,7 @@ vim.opt.ruler = false
 vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
 --vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 vim.opt.fillchars.eob=" "
-vim.opt.shortmess:append "c"
+--vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 

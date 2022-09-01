@@ -16,13 +16,6 @@ local diagnostics = {
   always_visible = true,
 }
 
-local diff = {
-  "diff",
-  colored = false,
-  symbols = { added = "", modified = "", removed = "" }, -- changes diff symbols
-  cond = hide_in_width,
-}
-
 local filetype = {
   "filetype",
   icons_enabled = false,
@@ -55,8 +48,16 @@ lualine.setup {
                     path = 1 -- 0=filename, 1=rel path, 2=abs path
                   }
                 },
-    lualine_x = { diff, "encoding", filetype },
+    lualine_x = { "diff", "encoding", filetype },
     lualine_y = { location },
     lualine_z = { "progress" },
   },
+  tabline = {
+  lualine_a = {{'buffers', mode = 0 }},
+  lualine_b = {},
+  lualine_c = {},
+  lualine_x = {},
+  lualine_y = {},
+  lualine_z = {}
+},
 }
