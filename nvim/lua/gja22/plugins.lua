@@ -1,6 +1,9 @@
 -- Packer configuration
 
-return require("packer").startup(function()
+-- The use parameter is not technically required, but it prevents
+-- a bunch of warning messages. I don't get the nuance, but the details
+-- are here https://github.com/wbthomason/packer.nvim/issues/243
+return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Plenary provides commonly used Lua functions
@@ -20,7 +23,7 @@ return require("packer").startup(function()
   use { "tpope/vim-unimpaired" }
 
   -- Autopairs, integrates with both cmp and treesitter
-  use { "windwp/nvim-autopairs" } 
+  use { "windwp/nvim-autopairs" }
 
   -- Lualine is a status line plugin
   use({
