@@ -10,7 +10,6 @@ vim.opt.hlsearch = false
 -- Display
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.termguicolors = true                    -- allow 24-bit RGB colors in the TUI
--- vim.opt.guicursor = "a:block"                   -- block cursor in all modes
 vim.opt.guicursor = "a:block"                   -- block cursor in all modes
 vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = false                  -- no relative numbering
