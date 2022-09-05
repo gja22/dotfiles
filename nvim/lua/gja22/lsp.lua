@@ -21,7 +21,12 @@ require("lspconfig").gopls.setup{
     keymap("n", "gD", function() vim.lsp.buf.declaration() end, opts)
     keymap("n", "gt", function() vim.lsp.buf.type_definition() end, opts)
     keymap("n", "gi", function() vim.lsp.buf.implementation() end, opts)
+    -- References go into the quickfix list
     keymap("n", "gr", function() vim.lsp.buf.references() end, opts)
+    -- Diagnostics go into the quickfix list
+    -- I think of `ge` as goto error
+    keymap("n", "ge", function() vim.diagnostic.setqflist() end, opts)
+    -- Because I have errors displaying this is not so useful
     keymap("n", "gl", function() vim.diagnostic.open_float() end, opts)
 
     keymap("n", "<leader>lf", function() vim.lsp.buf.formatting() end, opts)
@@ -31,7 +36,6 @@ require("lspconfig").gopls.setup{
     keymap("n", "<leader>lk", function() vim.diagnostic.goto_prev() end, opts)
     keymap("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts)
     keymap("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, opts)
-    keymap("n", "<leader>lq", function() vim.diagnostic.setqflist() end, opts)
   end,
 }
 
