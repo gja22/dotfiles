@@ -1,6 +1,8 @@
+local lspkind = require("lspkind")
 local cmp = require("cmp")
+local ls = require("luasnip")
 
-local luasnip = require("luasnip")
+print "IN CMP.LUA AFTER"
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -8,27 +10,16 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.shortmess:append "c"
 
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
-
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
-
 	mapping = cmp.mapping.preset.insert({
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
+		-- ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		-- ["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	}),
 
 	sources = cmp.config.sources({
@@ -38,5 +29,29 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
 	}),
+
+	snippet = {
+		expand = function(args)
+			ls.lsp_expand(args.body)
+		end,
+	},
+
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+
+  formatting = {
+    format = lspkind.cmp_format({
+      with_text = true,
+      menu = {
+        buffer = "[buf]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[api]",
+        path = "[path]",
+        luasnip = "[snip]",
+      }
+    })
+  },
 
 })

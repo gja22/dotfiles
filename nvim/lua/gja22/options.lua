@@ -36,9 +36,9 @@ vim.opt.swapfile = false                        -- no swapfile
 vim.opt.backup = false                          -- no backup file
 --vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.undofile = true                         -- enable persistent undo
-vim.opt.backupdir = "~/.vim/backup"
-vim.opt.directory = "~/.vim/swp"
-vim.opt.undodir = "~/.vim/undo"
+-- vim.opt.backupdir = "~/.vim/backup"
+-- vim.opt.directory = "~/.vim/swp"
+-- vim.opt.undodir = "~/.vim/undo"
 
 -- Save and quit
 vim.opt.hidden = true                           -- don't force buffer saves

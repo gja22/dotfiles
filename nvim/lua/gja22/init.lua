@@ -9,20 +9,24 @@ require("gja22.plugins")
 -- Status line configuration
 require("gja22.lualine")
 
--- Color Scheme
-require("gja22.colorscheme")
+-- Color Scheme configuration
+-- require("gja22.colorscheme")
 
--- Key mappings
+-- Key mappings configuration
 require("gja22.keymaps")
 
--- LSP
+-- LSP configuration
 require("gja22.lsp")
 
--- Completion
-require("gja22.cmp")
+-- Completion configuration
+-- require("gja22.cmp")
 
--- Autopairs
+-- Autopairs configuration
 require("gja22.autopairs")
 
--- Comment
-require("gja22.comment")
+-- Comment configuration
+-- require("gja22.comment")
+
+-- Luasnip configuration
+-- require("gja22.luasnip")
+-- require("gja22.snippets")

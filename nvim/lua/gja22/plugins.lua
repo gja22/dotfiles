@@ -1,9 +1,18 @@
 -- Packer configuration
+local packer = require("packer")
+
+packer.init({
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end
+  },
+})
 
 -- The use parameter is not technically required, but it prevents
 -- a bunch of warning messages. I don't get the nuance, but the details
 -- are here https://github.com/wbthomason/packer.nvim/issues/243
-return require("packer").startup(function(use)
+return packer.startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Plenary provides commonly used Lua functions
@@ -43,6 +52,7 @@ return require("packer").startup(function(use)
   use { "neovim/nvim-lspconfig" }
   use { "williamboman/mason.nvim" }
   use { "williamboman/mason-lspconfig.nvim" }
+  use { "onsails/lspkind-nvim" }
 
   -- Completions
   use { "hrsh7th/nvim-cmp" }         -- core completion engine 
@@ -59,5 +69,8 @@ return require("packer").startup(function(use)
   use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
   })
+
+  -- Git related
+  use { "lewis6991/gitsigns.nvim" }
 
 end)
