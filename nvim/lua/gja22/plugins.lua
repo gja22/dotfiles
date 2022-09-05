@@ -37,15 +37,7 @@ return require("packer").startup(function(use)
   use { "gruvbox-community/gruvbox" }
 
   -- Comments
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-        -- setup() establishes default key mappings
-        -- this could be done in a seperate file for consistency
-        -- but I'm leaving it for now
-        require('Comment').setup()
-    end
-  }
+  use { "numToStr/Comment.nvim" }
 
   -- LSP
   use { "neovim/nvim-lspconfig" }

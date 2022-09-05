@@ -23,3 +23,6 @@ require("gja22.cmp")
 
 -- Autopairs
 require("gja22.autopairs")
+
+-- Comment
+require("gja22.comment")
