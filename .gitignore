@@ -4,23 +4,13 @@
 # Mac finder stuff
 .DS_Store
 
-# emacs
-*~
-\#*\#
-
-# Vim
+# Vim misc files
 *.swp
 *.swo
 
 # Jetbrains IDEs
 .idea/
 
-# Sublime
-*.sublime-workspace
-
-# Hugo Public Site
-public/
-
 # nvim package manager stuff
-plugin/
+./plugin
 
