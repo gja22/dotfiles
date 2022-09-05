@@ -84,6 +84,9 @@ keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
+-- Use `C-q` within Telescope to write diagnostics to the quickfix list
+keymap("n", "<leader>fd", ":Telescope diagnostics<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 -- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 
 -- Git

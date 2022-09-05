@@ -9,7 +9,6 @@ vim.opt.shortmess:append "c"
 
 cmp.setup({
 	snippet = {
-  -- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
 		end,
