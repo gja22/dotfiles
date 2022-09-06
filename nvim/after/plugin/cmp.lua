@@ -1,8 +1,6 @@
-local lspkind = require("lspkind")
 local cmp = require("cmp")
 local ls = require("luasnip")
-
-print "IN CMP.LUA AFTER"
+local lspkind = require("lspkind")
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -53,5 +51,9 @@ cmp.setup({
       }
     })
   },
+
+	experimental = {
+		ghost_text = false,
+	},
 
 })

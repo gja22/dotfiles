@@ -6,7 +6,7 @@
 --   https://github.com/ThePrimeagen/.dotfiles
 --
 -- All configuration files are a mess.
--- Mine is no different.
+-- Mine are no different.
 -- Wander here at your own risk!
 
 -- Load my configuration
