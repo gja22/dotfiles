@@ -2,6 +2,8 @@ local cmp = require("cmp")
 local ls = require("luasnip")
 local lspkind = require("lspkind")
 
+lspkind.init()
+
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Don't pass messages to |ins-completion-menu|
@@ -20,6 +22,10 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	}),
 
+  -- sources options
+  --   keyword_length
+  --   priority (the order they are listed also influences priority)
+  --   max_item_count
 	sources = cmp.config.sources({
 		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
