@@ -6,6 +6,9 @@ require("gja22.options")
 -- Use packer to load plugins
 require("gja22.plugins")
 
+-- Autocommands
+require("gja22.autocommands")
+
 -- Status line configuration
 require("gja22.lualine")
 

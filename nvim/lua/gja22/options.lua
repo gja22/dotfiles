@@ -13,6 +13,7 @@ vim.opt.termguicolors = true                    -- allow 24-bit RGB colors in th
 vim.opt.guicursor = "a:block"                   -- block cursor in all modes
 vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = false                  -- no relative numbering
+vim.opt.textwidth = 80                          -- text width when wrapping enabled
 vim.opt.colorcolumn = "80"                      -- visually indicate line width
 vim.opt.signcolumn = "yes"                      -- show sign column (errors, etc.)
 vim.opt.wrap = false                            -- display lines as one long line
