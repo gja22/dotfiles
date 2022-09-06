@@ -12,5 +12,5 @@
 .idea/
 
 # nvim package manager stuff
-./nvim/plugin
+nvim/plugin/
 
