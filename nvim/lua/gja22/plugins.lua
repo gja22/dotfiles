@@ -34,6 +34,12 @@ return packer.startup(function(use)
   -- Autopairs, integrates with both cmp and treesitter
   use { "windwp/nvim-autopairs" }
 
+  -- Indent Blankline visually displays grouped code 
+  use { "lukas-reineke/indent-blankline.nvim" }
+
+  -- Illuminate, show matches to word under cursor
+  use { "RRethy/vim-illuminate" }
+
   -- Lualine is a status line plugin
   use({
         "nvim-lualine/lualine.nvim",
