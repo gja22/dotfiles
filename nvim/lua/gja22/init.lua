@@ -1,5 +1,8 @@
 -- Load Lua modules during initialization
 
+-- Useful stuff when writing plugins
+require("gja22.globals")
+
 -- Vim options
 require("gja22.options")
 
@@ -8,6 +11,9 @@ require("gja22.plugins")
 
 -- Autocommands
 require("gja22.autocommands")
+
+-- Indent Blankline configuration
+require("gja22.indentline")
 
 -- Status line configuration
 require("gja22.lualine")
