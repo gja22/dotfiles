@@ -43,8 +43,8 @@ require("gja22.autopairs")
 require("gja22.comment")
 
 -- Completion configuration
--- require("gja22.cmp")
+require("gja22.cmp")
 
 -- Luasnip configuration
 -- require("gja22.luasnip")
--- require("gja22.snippets")
+require("gja22.snippets")

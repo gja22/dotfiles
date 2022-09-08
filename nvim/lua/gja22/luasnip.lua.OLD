@@ -1,24 +1,24 @@
 local ls = require("luasnip")
 -- local types = require("luasnip.util.types")
 
-ls.config.set_config({
+-- ls.config.set_config({
+--
+--   -- remember last snippet so you can jump bakc into it
+--   history = true,
+--
+--   -- update snippets as you type
+--   updateevents = "TextChanged,TextChangedI",
+--
+--   -- Autosnippets
+--   enable_autosnippets = true,
+--
+-- })
 
-  -- remember last snippet so you can jump bakc into it
-  history = true,
-
-  -- update snippets as you type
-  updateevents = "TextChanged,TextChangedI",
-
-  -- Autosnippets
-  enable_autosnippets = true,
-
-})
-
-ls.snippets = {
-  all = {
-    ls.parser.parse_snippet("expand", "-- this is what was expanded!"),
-  },
-}
+-- ls.snippets = {
+--   all = {
+--     ls.parser.parse_snippet("expand", "-- this is what was expanded!"),
+--   },
+-- }
 
 -- <c-k> is my expansion key
 -- this will expand the current item or jump to the next item within the snippet.
