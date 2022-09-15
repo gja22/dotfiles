@@ -41,10 +41,10 @@ return packer.startup(function(use)
   use { "RRethy/vim-illuminate" }
 
   -- Lualine is a status line plugin
-  use({
-        "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true }
-    })
+  use { "nvim-lualine/lualine.nvim" }
+
+  -- Devicons for a few plugins
+  use { "kyazdani42/nvim-web-devicons" }
 
     -- Color Schemes
   use { "folke/tokyonight.nvim" }
@@ -76,7 +76,7 @@ return packer.startup(function(use)
         run = ":TSUpdate"
   })
 
-  -- Git related
+   -- Git related
   use { "lewis6991/gitsigns.nvim" }
 
 end)
