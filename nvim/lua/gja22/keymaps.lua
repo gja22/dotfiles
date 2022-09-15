@@ -84,10 +84,20 @@ keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
+keymap("n", "<leader>fw", ":Telescope grep_string<CR>", opts)
 -- Use `C-q` within Telescope to write diagnostics to the quickfix list
 keymap("n", "<leader>fd", ":Telescope diagnostics<CR>", opts)
 keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 -- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+
+-- Harpoon
+keymap("n", "<leader>a", function() require("harpoon.mark").add_file() end, opts)
+keymap("n", "<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, opts)
+
+keymap("n", "<C-h>", function() require("harpoon.ui").nav_file(1) end, opts)
+keymap("n", "<C-j>", function() require("harpoon.ui").nav_file(2) end, opts)
+keymap("n", "<C-k>", function() require("harpoon.ui").nav_file(3) end, opts)
+keymap("n", "<C-l>", function() require("harpoon.ui").nav_file(4) end, opts)
 
 -- Git
 --keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

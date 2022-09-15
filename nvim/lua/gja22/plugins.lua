@@ -25,6 +25,9 @@ return packer.startup(function(use)
   -- Telescope is a fuzzy finder
   use("nvim-telescope/telescope.nvim")
 
+  -- Harpoon is, well, harpoon
+  use { "ThePrimeagen/harpoon" }
+
   -- Netrw wrapper
   use { "tpope/vim-vinegar" }
 
