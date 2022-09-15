@@ -33,6 +33,7 @@ return packer.startup(function(use)
 
   -- Convenience Mappings
   use { "tpope/vim-unimpaired" }
+  use { "tpope/vim-surround" }
 
   -- Autopairs, integrates with both cmp and treesitter
   use { "windwp/nvim-autopairs" }
