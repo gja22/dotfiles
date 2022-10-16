@@ -11,4 +11,3 @@
 
 -- Load my configuration
 require("gja22")
-
