@@ -93,11 +93,15 @@ keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
 -- Harpoon
 keymap("n", "<leader>a", function() require("harpoon.mark").add_file() end, opts)
 keymap("n", "<C-e>", function() require("harpoon.ui").toggle_quick_menu() end, opts)
-
 keymap("n", "<C-h>", function() require("harpoon.ui").nav_file(1) end, opts)
 keymap("n", "<C-j>", function() require("harpoon.ui").nav_file(2) end, opts)
 keymap("n", "<C-k>", function() require("harpoon.ui").nav_file(3) end, opts)
 keymap("n", "<C-l>", function() require("harpoon.ui").nav_file(4) end, opts)
+
+-- My own plugin experiment
+keymap("n", "<leader>zo", function() require("capture").oneonone() end, opts)
+keymap("n", "<leader>zm", function() require("capture").meeting() end, opts)
+keymap("n", "<leader>zn", function() require("capture").note() end, opts)
 
 -- Git
 --keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
