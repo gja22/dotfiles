@@ -1,3 +1,17 @@
+-- Experimenting
+-- local group = vim.api.nvim_create_augroup("Madge", { clear = true })
+-- vim.api.nvim_create_autocmd("BufEnter", { command = "echo 'Madge'", group = group })
+-- vim.api.nvim_create_autocmd("BufEnter", { command = "echo 'Geoff'", group = group, buffer = 0 })
+
+-- Format go code on save
+local gogroup = vim.api.nvim_create_augroup("GoGroup", { clear = true })
+
+-- vim.api.nvim_create_autocmd("BufWritePre",
+--   {group = gogroup,
+--    pattern = { "*.go", },
+--    command = "echo 'Yeah Baby'"}
+-- )
+
 -- Use 'q' to quit from common plugins
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
