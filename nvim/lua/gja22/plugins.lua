@@ -14,7 +14,7 @@ packer.init({
 -- are here https://github.com/wbthomason/packer.nvim/issues/243
 return packer.startup(function(use)
     -- experimenting with my own plugin
-    use "~/gja22/capture.nvim"
+    use("~/gja22/capture.nvim")
 
     use("wbthomason/packer.nvim")
 
