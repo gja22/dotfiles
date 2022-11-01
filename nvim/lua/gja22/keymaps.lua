@@ -102,6 +102,8 @@ keymap("n", "<C-l>", function() require("harpoon.ui").nav_file(4) end, opts)
 keymap("n", "<leader>zo", function() require("capture").oneonone() end, opts)
 keymap("n", "<leader>zm", function() require("capture").meeting() end, opts)
 keymap("n", "<leader>zn", function() require("capture").note() end, opts)
+keymap("n", "<leader>zd", function() require("capture").daily() end, opts)
+keymap("n", "<leader>zw", function() require("capture").weekly() end, opts)
 
 -- Git
 --keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
