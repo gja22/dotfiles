@@ -57,6 +57,7 @@ return packer.startup(function(use)
     use { "folke/tokyonight.nvim" }
     use { "lunarvim/darkplus.nvim" }
     use { "gruvbox-community/gruvbox" }
+    use { "Tsuzat/NeoSolarized.nvim" }
 
     -- Comments
     use { "numToStr/Comment.nvim" }
