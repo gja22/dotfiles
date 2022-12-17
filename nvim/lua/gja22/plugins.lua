@@ -58,6 +58,7 @@ return packer.startup(function(use)
     use { "lunarvim/darkplus.nvim" }
     use { "gruvbox-community/gruvbox" }
     use { "Tsuzat/NeoSolarized.nvim" }
+    use { "rose-pine/neovim" }
 
     -- Comments
     use { "numToStr/Comment.nvim" }
