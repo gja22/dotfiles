@@ -55,6 +55,9 @@ keymap("n", "<leader><Space>", ":nohlsearch<CR>", opts)
 -- move cursor line to center of screen when scrolling down and up
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
+-- move cursor line to center of screen when jumping to next search
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
 
 -- Writing
 -- Redraw long lines to stay within width
