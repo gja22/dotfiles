@@ -17,8 +17,10 @@ telescope.setup {
       i = {
         ["<Down>"] = actions.cycle_history_next,
         ["<Up>"] = actions.cycle_history_prev,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
+        -- C-n for next is available by default
+        -- ["<C-j>"] = actions.move_selection_next,
+        -- C-p for previous is available by default
+        -- ["<C-k>"] = actions.move_selection_previous,
       },
     },
   },
