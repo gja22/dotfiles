@@ -6,7 +6,7 @@ if not status_ok then
 end
 
 indent_blankline.setup({
-  -- There is a of configuration available. I'd like t add back the
+  -- There is a of configuration available. I'd like to add back the
   -- highlighting of the active block, but keeping it simple for now.
   --
   -- This prevents highlighting blocks that are not semantic in golang,
