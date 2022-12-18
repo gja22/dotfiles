@@ -14,9 +14,57 @@ packer.init({
 -- are here https://github.com/wbthomason/packer.nvim/issues/243
 return packer.startup(function(use)
     -- experimenting with my own plugin
-    use("~/gja22/capture.nvim")
+    use '~/gja22/capture.nvim'
 
-    use("wbthomason/packer.nvim")
+    -- Package manager
+    use 'wbthomason/packer.nvim'
+
+    -- LSP configuration & plugins
+    use { 'neovim/nvim-lspconfig',
+        requires = {
+            -- Autoinstall LSPs to standard path
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            -- Useful status updates for LSP
+            'j-hui/fidget.nvim',
+        },
+    }
+
+    -- Autocompletion
+    use { 'hrsh7th/nvim-cmp', -- Core completion engine
+        requires = {
+            'hrsh7th/cmp-nvim-lsp', -- integration with lsp
+            'L3MON4D3/LuaSnip', -- snippet engine
+            'saadparwaiz1/cmp_luasnip', -- snippet completions
+        },
+    }
+    -- use { "hrsh7th/cmp-buffer" } -- buffer completions
+    -- use { "hrsh7th/cmp-path" } -- path completions
+    -- use { "hrsh7th/cmp-nvim-lua" } -- neovim lua knowledge (e.g. apis)
+
+    -- Treesitter (highlight, edit, and navigate code)
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
+    }
+
+    use { -- Additional text objects via treesitter
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        after = 'nvim-treesitter',
+    }
+
+    -- Git related
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
+    use 'lewis6991/gitsigns.nvim'
+
+
+
+
+
+
 
     -- Plenary provides commonly used Lua functions
     use("nvim-lua/plenary.nvim")
@@ -45,9 +93,9 @@ return packer.startup(function(use)
     use { "lukas-reineke/indent-blankline.nvim" }
 
     -- Illuminate, show matches to word under cursor
-    use { "RRethy/vim-illuminate" }
+    -- use { "RRethy/vim-illuminate" }
 
-    -- Lualine is a status line plugin
+    -- Status line
     use { "nvim-lualine/lualine.nvim" }
 
     -- Devicons for a few plugins
@@ -59,34 +107,9 @@ return packer.startup(function(use)
     use { "gruvbox-community/gruvbox" }
     use { "Tsuzat/NeoSolarized.nvim" }
     use { "rose-pine/neovim" }
+    use { "navarasu/onedark.nvim" }
 
     -- Comments
-    use { "numToStr/Comment.nvim" }
-
-    -- LSP
-    use { "neovim/nvim-lspconfig" }
-    use { "williamboman/mason.nvim" }
-    use { "williamboman/mason-lspconfig.nvim" }
-    use { "onsails/lspkind-nvim" }
-
-    -- Completions
-    use { "hrsh7th/nvim-cmp" } -- core completion engine
-    use { "hrsh7th/cmp-buffer" } -- buffer completions
-    use { "hrsh7th/cmp-path" } -- path completions
-    use { "hrsh7th/cmp-nvim-lua" } -- neovim lua knowledge (e.g. apis)
-    use { "hrsh7th/cmp-nvim-lsp" } -- integration with lsp
-    use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
-
-    -- Snippets
-    use { "L3MON4D3/LuaSnip" } -- snippet engine
-
-    -- Treesitter
-    use("nvim-treesitter/nvim-treesitter", {
-        run = ":TSUpdate"
-    })
-
-    -- Git related
-    use { "lewis6991/gitsigns.nvim" }
-    use { "tpope/vim-fugitive" }
+    use 'numToStr/Comment.nvim'
 
 end)

@@ -1,50 +1,31 @@
 -- Load Lua modules during initialization
 
 -- Useful stuff when writing plugins
-require("gja22.globals")
+require 'gja22.globals'
 
 -- Vim options
-require("gja22.options")
+require 'gja22.options'
 
 -- Use packer to load plugins
-require("gja22.plugins")
+require 'gja22.plugins'
 
 -- Autocommands
-require("gja22.autocommands")
+require 'gja22.autocommands'
+require 'gja22.keymaps'     -- Key mappings
 
--- Indent Blankline configuration
-require("gja22.indentline")
+-- Plugin Configuration
+require 'gja22.indentline'  -- Indent blankline
+require 'gja22.gitsigns'    -- Gitsigns
+require 'gja22.lualine'     -- Lualine
+require 'gja22.colorscheme' -- Colorscheme
+require 'gja22.treesitter'  -- Treesitter
+require 'gja22.lsp'         -- LSP
+require 'gja22.cmp'         -- Completion
+require 'gja22.telescope'   -- Telescope
+require 'gja22.harpoon'     -- Harpoon
+require 'gja22.fugitive'    -- Fugitive
+require 'gja22.autopairs'   -- Autopairs
+require 'gja22.comment'     -- Comment
 
--- Gitsigns configuration
-require("gja22.gitsigns")
-
--- Illuminate configuration
-require("gja22.illuminate")
-
--- Status line configuration
-require("gja22.lualine")
-
--- Color Scheme configuration
-require("gja22.colorscheme")
-
--- Key mappings configuration
-require("gja22.keymaps")
-
--- LSP configuration
-require("gja22.lsp")
-
--- Telescope configuration
-require("gja22.telescope")
-
--- Autopairs configuration
-require("gja22.autopairs")
-
--- Comment configuration
-require("gja22.comment")
-
--- Completion configuration
-require("gja22.cmp")
-
--- Luasnip configuration
--- require("gja22.luasnip")
-require("gja22.snippets")
+-- My snippets
+require 'gja22.snippets'

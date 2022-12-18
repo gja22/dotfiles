@@ -1,12 +1,10 @@
 -- Set the color scheme
 
--- local colorscheme = "gruvbox"
--- local colorscheme = "tokyonight"
--- local colorscheme = "tokyonight-night"
-local colorscheme = "NeoSolarized"
+-- local color = 'gruvbox'
+-- local color = 'tokyonight'
+-- local color = 'tokyonight-night'
+-- local color = 'NeoSolarized'
+-- local color = 'onedark'
+local color = 'rose-pine'
 
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-
-if not status_ok then
-    return
-end
+vim.cmd.colorscheme(color)

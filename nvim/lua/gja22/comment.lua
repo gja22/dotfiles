@@ -1,3 +1,4 @@
+-- Check if Comment plugin is installed
 local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
     return
@@ -39,7 +40,5 @@ comment.setup({
         -- can be string (lua regex)
         -- of function (that returns lua regex)
         ignore = nil,
-
     },
-
 })
