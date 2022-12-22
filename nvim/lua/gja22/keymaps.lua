@@ -26,7 +26,7 @@ keymap("n", "<leader>r", ":set relativenumber!<CR>", opts)
 keymap("n", "<leader>n", ":set number!<CR>", opts)
 
 -- Toggle listchars
-keymap("n", "<leader>h", ":set list!<CR>", opts)
+keymap("n", "<leader>v", ":set list!<CR>", opts)
 
 -- Windows
 -- fast window creation
