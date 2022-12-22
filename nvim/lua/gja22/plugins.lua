@@ -1,10 +1,10 @@
 -- Packer configuration
-local packer = require("packer")
+local packer = require('packer')
 
 packer.init({
     display = {
         open_fn = function()
-            return require("packer.util").float { border = "rounded" }
+            return require('packer.util').float { border = 'rounded' }
         end
     },
 })
@@ -18,6 +18,13 @@ return packer.startup(function(use)
 
     -- Package manager
     use 'wbthomason/packer.nvim'
+
+    -- Plenary provides commonly used Lua functions
+    use('nvim-lua/plenary.nvim')
+
+    -- Popup is used by a few other plugins if available
+    -- will likely be part of core neovim in the future
+    use('nvim-lua/popup.nvim')
 
     -- LSP configuration & plugins
     use { 'neovim/nvim-lspconfig',
@@ -60,21 +67,15 @@ return packer.startup(function(use)
     use 'tpope/vim-rhubarb'
     use 'lewis6991/gitsigns.nvim'
 
-
-
-
-
-
-
-    -- Plenary provides commonly used Lua functions
-    use("nvim-lua/plenary.nvim")
-
-    -- Popup is used by a few other plugins if available
-    -- will likely be part of core neovim in the future
-    use("nvim-lua/popup.nvim")
-
     -- Telescope is a fuzzy finder
-    use("nvim-telescope/telescope.nvim")
+    use { 'nvim-telescope/telescope.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-lua/popup.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            'nvim-telescope/telescope-file-browser.nvim',
+        }
+    }
 
     -- Harpoon is, well, harpoon
     use { "ThePrimeagen/harpoon" }
