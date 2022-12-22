@@ -11,6 +11,7 @@
 # Jetbrains IDEs
 .idea/
 
-# nvim package manager stuff
+# nvim stuff
 nvim/plugin/
+nvim/spell/
 
