@@ -44,7 +44,8 @@ end
 require('mason').setup()
 
 -- Enable the following language servers
-local servers = { 'sumneko_lua', 'gopls' }
+--local servers = { 'sumneko_lua', 'gopls' }
+local servers = { 'lua_ls', 'gopls' }
 
 -- Ensure servers are installed
 require('mason-lspconfig').setup {
@@ -72,7 +73,8 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 -- setup lua lsp
-require('lspconfig').sumneko_lua.setup {
+--require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
