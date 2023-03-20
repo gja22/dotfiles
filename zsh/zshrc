@@ -100,6 +100,7 @@ alias tgw='~/gja22/config/tmux-sessions/tmux-gja22-web'
 alias tpl='~/gja22/config/tmux-sessions/tmux-proglog'
 alias tdot='~/gja22/config/tmux-sessions/tmux-dotfiles'
 alias tcon='~/gja22/config/tmux-sessions/tmux-console'
+alias twom='~/gja22/config/tmux-sessions/tmux-wombat'
 alias tlc='~/gja22/config/tmux-sessions/tmux-leetcode'
 
 export PATH=$HOME/bin:~/go/bin:$PATH
