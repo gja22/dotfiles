@@ -5,6 +5,10 @@ if not status_ok then
 end
 
 indent_blankline.setup {
-  char = '┊',
+  char = '',
+  -- char = '┊',
+  context_char = '│',
+  show_current_context = true,
+  show_current_context_start = false,
   show_trailing_blankline_indent = false,
 }
