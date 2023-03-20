@@ -14,4 +14,4 @@
 # nvim stuff
 nvim/plugin/
 nvim/spell/
-
+nvim/lua/.luarc.json
