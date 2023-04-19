@@ -14,7 +14,7 @@ local on_attach = function(_, bufnr)
     nmap('<leader>lr', vim.lsp.buf.rename, '[L]SP [R]ename')
     nmap('<leader>la', vim.lsp.buf.code_action, '[L]SP [A]ction')
     -- TODO replace the following with command Format as setup below
-    -- nmap('<leader>lf', vim.lsp.buf.format, '[L]SP [F]ormat')
+    nmap('<leader>lf', vim.lsp.buf.format, '[L]SP [F]ormat')
 
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
