@@ -1,8 +1,8 @@
 local ls = require("luasnip")
 
 -- Some shorthands
-local s = ls.snippet
-local t = ls.text_node
+-- local s = ls.snippet
+-- local t = ls.text_node
 
 ls.config.set_config({
 
@@ -20,7 +20,7 @@ ls.config.set_config({
 ls.add_snippets(
     "all",
     {
-        s("simple", { t("wow, you were right"), }),
-        s("fred", { t("fred flintstone"), }),
+        -- s("simple", { t("wow, you were right"), }),
+        -- s("fred", { t("fred flintstone"), }),
     }
 )
