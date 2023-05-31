@@ -109,6 +109,7 @@ return packer.startup(function(use)
     use { "Tsuzat/NeoSolarized.nvim" }
     use { "rose-pine/neovim" }
     use { "navarasu/onedark.nvim" }
+    use { "rebelot/kanagawa.nvim" }
 
     -- Comments
     use 'numToStr/Comment.nvim'
