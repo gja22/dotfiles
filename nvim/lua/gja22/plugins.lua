@@ -38,10 +38,10 @@ return packer.startup(function(use)
     }
 
     -- Autocompletion
-    use { 'hrsh7th/nvim-cmp', -- Core completion engine
+    use { 'hrsh7th/nvim-cmp',           -- Core completion engine
         requires = {
-            'hrsh7th/cmp-nvim-lsp', -- integration with lsp
-            'L3MON4D3/LuaSnip', -- snippet engine
+            'hrsh7th/cmp-nvim-lsp',     -- integration with lsp
+            'L3MON4D3/LuaSnip',         -- snippet engine
             'saadparwaiz1/cmp_luasnip', -- snippet completions
         },
     }
@@ -97,10 +97,12 @@ return packer.startup(function(use)
     -- use { "RRethy/vim-illuminate" }
 
     -- Status line
-    use { "nvim-lualine/lualine.nvim" }
+    use { 'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-icons', opt = true }
+    }
 
     -- Devicons for a few plugins
-    use { "kyazdani42/nvim-web-devicons" }
+    use { 'nvim-tree/nvim-web-devicons' }
 
     -- Color Schemes
     use { "folke/tokyonight.nvim" }
@@ -113,5 +115,4 @@ return packer.startup(function(use)
 
     -- Comments
     use 'numToStr/Comment.nvim'
-
 end)
