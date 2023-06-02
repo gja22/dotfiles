@@ -98,7 +98,7 @@ return packer.startup(function(use)
 
     -- Status line
     use { 'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-icons', opt = true }
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
     -- Devicons for a few plugins
