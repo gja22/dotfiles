@@ -70,7 +70,7 @@ keymap("n", "<leader>d", "gqip", opts)
 --keymap("v", "p", '"_dP', opts)
 
 -- INSERT MODE MAPPINGS --
-keymap("i", "jk", "<ESC>", opts)
+-- keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
