@@ -45,7 +45,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 --local servers = { 'sumneko_lua', 'gopls' }
-local servers = { 'lua_ls', 'gopls', 'terraformls' }
+local servers = { 'lua_ls', 'gopls', 'terraformls', 'cssls', 'html' }
 
 -- Ensure servers are installed
 require('mason-lspconfig').setup {
