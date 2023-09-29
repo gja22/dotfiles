@@ -14,7 +14,7 @@ require 'gja22.autocommands'
 require 'gja22.keymaps'     -- Key mappings
 
 -- Plugin Configuration
-require 'gja22.indentline'  -- Indent blankline
+-- require 'gja22.indentline'  -- Indent blankline
 require 'gja22.gitsigns'    -- Gitsigns
 require 'gja22.lualine'     -- Lualine
 require 'gja22.colorscheme' -- Colorscheme
