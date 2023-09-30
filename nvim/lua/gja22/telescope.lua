@@ -1,28 +1,31 @@
--- Check if telescope is installed
-local status_ok, telescope = pcall(require, 'telescope')
-if not status_ok then
-  return
-end
+-- Telescope configuration
 
-telescope.setup {
-  defaults = {
+require("telescope").setup {
+    defaults = {
 
-    prompt_prefix = " ",
-    selection_caret = " ",
-    path_display = { "truncate" },
-    file_ignore_patterns = { ".git/", "node_modules" },
+        prompt_prefix = " ",
+        selection_caret = " ",
+        path_display = { "truncate" },
+        file_ignore_patterns = { ".git/", "node_modules" },
 
-    mappings = {
-      i = {
-        ["<Down>"] = require('telescope.actions').cycle_history_next,
-        ["<Up>"] = require('telescope.actions').cycle_history_prev,
-        -- C-n for next is available by default
-        ["<C-j>"] = require('telescope.actions').move_selection_next,
-        -- C-p for previous is available by default
-        ["<C-k>"] = require('telescope.actions').move_selection_previous,
-      },
+        mappings = {
+            i = {
+                -- Useful Telescope commands that are built in
+                -- Use `C-q` write diagnostics to the quickfix list
+                -- Use `C-p` previous item in list
+                -- Use `C-n` next item in list
+
+                ["<Down>"] = require('telescope.actions').cycle_history_next,
+                ["<Up>"] = require('telescope.actions').cycle_history_prev,
+                -- C-n for next is available by default
+                ["<C-j>"] = require('telescope.actions').move_selection_next,
+                -- C-p for previous is available by default
+                ["<C-k>"] = require('telescope.actions').move_selection_previous,
+                ["<C-u>"] = false,
+                ["<C-d>"] = false,
+            },
+        },
     },
-  },
 }
 
 -- Load extensions
@@ -30,18 +33,8 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('file_browser')
 
 -- Telescope Keymaps
-vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[F]ind [F]iles' })
-vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind [G]rep' })
-vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<cr>', { desc = '[F]ile [B]rowser', noremap = true, })
-vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers, { desc = '[B]uffers' })
-vim.keymap.set('n', '<leader>fc', require('telescope.builtin').git_status, {desc = '[F]ind [C]hanges' })
-vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[F]ind [H]elp' })
-vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind [W]ord under cursor' })
-vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
-vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[F]ind [R]ecent' })
-vim.keymap.set('n', '<leader>fs', function()
-    require('telescope.builtin').grep_string({ search = vim.fn.input("Grep initial fileset > ") })
-end, { desc = '[F]ind [S]ubset, grep initial fileset' })
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
     require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,
@@ -49,10 +42,14 @@ vim.keymap.set('n', '<leader>/', function()
     })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
--- Useful Telescope commands that are built in
--- Use `C-q` write diagnostics to the quickfix list
--- Use `C-p` previous item in list
--- Use `C-n` next item in list
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch [W]ord under cursor' })
+vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
--- keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
+vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<cr>', { desc = '[F]ile [B]rowser', noremap = true, })
 
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_status, { desc = '[G]it [C]hanges' })
