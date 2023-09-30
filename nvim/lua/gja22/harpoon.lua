@@ -1,8 +1,4 @@
--- Check if harpoon is installed
-local status_ok, _ = pcall(require, 'harpoon')
-if not status_ok then
-  return
-end
+-- Harpoon configuration
 
 local mark = require('harpoon.mark')
 local ui = require('harpoon.ui')
