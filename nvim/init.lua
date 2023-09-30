@@ -6,6 +6,7 @@
 --   https://github.com/ThePrimeagen/.dotfiles
 --   https://github.com/nvim-lua/kickstart.nvim
 --   https://github.com/VonHeikemen/lsp-zero.nvim
+--   https://github.com/nvim-lua/kickstart.nvim
 --
 -- All configuration files are a mess.
 -- Mine are no different.
