@@ -96,7 +96,7 @@ return packer.startup(function(use)
     use "windwp/nvim-autopairs"
 
     -- Indent Blankline visually displays grouped code
-    -- use { "lukas-reineke/indent-blankline.nvim" }
+    use { "lukas-reineke/indent-blankline.nvim" }
 
     -- Illuminate, show matches to word under cursor
     -- use { "RRethy/vim-illuminate" }

@@ -89,6 +89,9 @@ keymap("n", "<leader>zn", function() require("capture").note() end, opts)
 keymap("n", "<leader>zd", function() require("capture").daily() end, opts)
 keymap("n", "<leader>zw", function() require("capture").weekly() end, opts)
 
+-- Undo Tree
+keymap("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
+
 -- Git
 --keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
