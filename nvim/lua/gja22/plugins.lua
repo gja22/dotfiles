@@ -17,6 +17,9 @@ packer.init({
 -- use function with the package as the first paramater.
 return packer.startup(function(use)
     -- experimenting with my own plugin
+    -- Official install from github
+    -- use "gja22/capture.nvim"
+    -- Using local development version
     use "~/gja22/capture.nvim"
 
     -- Package manager
@@ -58,7 +61,8 @@ return packer.startup(function(use)
     -- Treesitter (highlight, edit, and navigate code)
     use { "nvim-treesitter/nvim-treesitter",
         run = function()
-            pcall(require("nvim-treesitter.install").update { with_sync = true })
+            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+            ts_update()
         end,
     }
 
@@ -66,6 +70,9 @@ return packer.startup(function(use)
     use { "nvim-treesitter/nvim-treesitter-textobjects",
         after = "nvim-treesitter",
     }
+
+    -- Undotree
+    use 'mbbill/undotree'
 
     -- Git related
     use "tpope/vim-fugitive"
