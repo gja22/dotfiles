@@ -1,12 +1,9 @@
 -- Indent_blankline configuration
+--
+-- Remember, when confused try :help ibl.config
 
-require("ibl").setup()
-
---[[ indent_blankline.setup {
-  char = '',
-  -- char = '┊',
-  context_char = '│',
-  show_current_context = true,
-  show_current_context_start = false,
-  show_trailing_blankline_indent = false,
-} ]]
+require('ibl').setup {
+    exclude = {
+        filetypes = { 'markdown' },
+    },
+}
