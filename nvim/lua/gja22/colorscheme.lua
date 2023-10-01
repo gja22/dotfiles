@@ -4,8 +4,8 @@
 -- local color = 'tokyonight'
 -- local color = 'tokyonight-night'
 -- local color = 'NeoSolarized'
--- local color = 'onedark'
+local color = 'onedark'
 -- local color = 'rose-pine'
-local color = 'kanagawa'
+-- local color = 'kanagawa'
 
 vim.cmd.colorscheme(color)
