@@ -15,3 +15,6 @@ require('ibl').setup {
         char = '▏',
     },
 }
+
+-- Toogle indentline display, sometimes it's just too much
+vim.keymap.set("n", "<leader>i", '<cmd>IBLToggle<cr>', { silent = true, desc = 'Toggle Indentline display', })
