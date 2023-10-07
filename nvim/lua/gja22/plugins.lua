@@ -77,6 +77,19 @@ return packer.startup(function(use)
     -- Neovim dev support, esp. runtime
     use 'folke/neodev.nvim'
 
+    -- Choe pending keybinds
+    use {
+        'folke/which-key.nvim',
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 500
+            require('which-key').setup {
+                -- your config here
+                -- or leave empty to get the defaults
+            }
+        end
+    }
+
     -- Git related
     use "tpope/vim-fugitive"
     use "tpope/vim-rhubarb"

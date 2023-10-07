@@ -1,10 +1,9 @@
 -- Shorten function name
-local keymap = vim.keymap.set
--- Silent keymap option
-local opts = { silent = false }
+local nmap = function(keys, func, desc)
+    vim.keymap.set('n', keys, func, { desc = desc,} )
+end
 
---Remap space as leader key
---keymap("", "<Space>", "<Nop>", opts)
+--Space as my leader key
 vim.g.mapleader = " "
 
 -- Modes
@@ -18,53 +17,54 @@ vim.g.mapleader = " "
 -- NORMAL MODE MAPPINGS --
 
 -- Save and quit
-keymap("n", "<leader>w", ":w<CR>", opts)
--- keymap("n", "<leader>q", ":q<CR>", opts)
+nmap("<leader>w", ":w<cr>", 'Write file')
+nmap("<leader>q", ":q<cr>", 'Quit')
 
--- Easy toggling of numbering
-keymap("n", "<leader>r", ":set relativenumber!<CR>", opts)
-keymap("n", "<leader>n", ":set number!<CR>", opts)
+-- Toggle of numbering
+nmap("<leader>r", ":set relativenumber!<CR>", 'Toggle relativenumber')
+nmap("<leader>n", ":set number!<CR>", 'Toggle number')
 
 -- Toggle listchars
-keymap("n", "<leader>v", ":set list!<CR>", opts)
+nmap("<leader>v", ":set list!<CR>", 'Toggle listchars')
 
 -- Windows
 -- fast window creation
-keymap("n", "<leader><Right>", "<C-w>v", opts)
-keymap("n", "<leader><Down>", "<C-w>s", opts)
+nmap("<leader><Right>", "<C-w>v", 'Create window to the right')
+nmap("<leader><Down>", "<C-w>s", 'Create window below')
 -- close current window
-keymap("n", "<leader>c", ":close<CR>", opts)
+nmap("<leader>c", ":close<cr>", 'Close window')
 -- close other windows
-keymap("n", "<leader>o", ":only<CR>", opts)
+nmap("<leader>o", ":only<cr>", 'Only window')
 -- make all windows equal size
-keymap("n", "<leader>=", "<C-w>=", opts)
+nmap("<leader>=", "<C-w>=", 'Make windows the same size')
 -- increase height of window
-keymap("n", "<leader><Up>", "<C-w>5+", opts)
+nmap("<leader><Up>", "<C-w>5+", 'Make window taller')
 -- increase width of window
-keymap("n", "<leader><Left>", "<C-w>5>", opts)
+nmap("<leader><Left>", "<C-w>5>", 'Make window wider')
 -- use arrows for window navigation
-keymap("n", "<Left>", "<C-w>h", opts)
-keymap("n", "<Down>", "<C-w>j", opts)
-keymap("n", "<Up>", "<C-w>k", opts)
-keymap("n", "<Right>", "<C-w>l", opts)
+nmap("<Left>", "<C-w>h", 'Move to window to the left')
+nmap("<Down>", "<C-w>j", 'Move to window below')
+nmap("<Up>", "<C-w>k", 'Move to window above')
+nmap("<Right>", "<C-w>l", 'Move to window to the right')
 
 -- Clear search highlighting
--- keymap("n", "<leader><Space>", ":nohlsearch<CR>", opts)
+-- Conflicts with search buffers
+-- keymap("<leader><Space>", ":nohlsearch<CR>", 'Clear search highlighting')
 
 -- Navigation
 -- move cursor line to center of screen when scrolling down and up
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+nmap("<C-d>", "<C-d>zz", 'Scroll down and center')
+nmap("<C-u>", "<C-u>zz", 'Scroll up and center')
 -- move cursor line to center of screen when jumping to next search
-keymap("n", "n", "nzz", opts)
-keymap("n", "N", "Nzz", opts)
+nmap("n", "nzz", 'Find next and center')
+nmap("N", "Nzz", 'Find prev and center')
 
 -- Writing
 -- Redraw long lines to stay within width
-keymap("n", "<leader>d", "gqip", opts)
+nmap("<leader>d", "gqip", 'Redraw long lines')
 
 -- Close buffers
---keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+--keymap("<S-q>", "<cmd>Bdelete!<CR>", opts)
 
 -- Better paste
 --keymap("v", "p", '"_dP', opts)
@@ -80,32 +80,14 @@ keymap("n", "<leader>d", "gqip", opts)
 -- PLUGIN MAPPINGS --
 
 -- NvimTree
--- keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- keymap("<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- My own plugin experiment
-keymap("n", "<leader>zo", function() require("capture").oneonone() end, opts)
-keymap("n", "<leader>zm", function() require("capture").meeting() end, opts)
-keymap("n", "<leader>zn", function() require("capture").note() end, opts)
-keymap("n", "<leader>zd", function() require("capture").daily() end, opts)
-keymap("n", "<leader>zw", function() require("capture").weekly() end, opts)
+nmap("<leader>zo", function() require("capture").oneonone() end, 'Zettel 1-1')
+nmap("<leader>zm", function() require("capture").meeting() end, 'Zettel neeting')
+nmap("<leader>zn", function() require("capture").note() end, 'Zettel note')
+nmap("<leader>zd", function() require("capture").daily() end, 'Zettel daily')
+nmap("<leader>zw", function() require("capture").weekly() end, 'Zettel weekly')
 
 -- Undo Tree
-keymap("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
-
--- Git
---keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
--- Comment
--- keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
--- keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
-
--- DAP
---keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
---keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
---keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
---keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
---keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
---keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
---keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
---keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
---keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+nmap("<leader>u", vim.cmd.UndotreeToggle, 'Toggle Undotree')
