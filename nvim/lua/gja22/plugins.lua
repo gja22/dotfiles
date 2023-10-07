@@ -74,6 +74,9 @@ return packer.startup(function(use)
     -- Undotree
     use 'mbbill/undotree'
 
+    -- Neovim dev support, esp. runtime
+    use 'folke/neodev.nvim'
+
     -- Git related
     use "tpope/vim-fugitive"
     use "tpope/vim-rhubarb"

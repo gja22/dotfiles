@@ -19,7 +19,7 @@ vim.g.mapleader = " "
 
 -- Save and quit
 keymap("n", "<leader>w", ":w<CR>", opts)
-keymap("n", "<leader>q", ":q<CR>", opts)
+-- keymap("n", "<leader>q", ":q<CR>", opts)
 
 -- Easy toggling of numbering
 keymap("n", "<leader>r", ":set relativenumber!<CR>", opts)
@@ -49,7 +49,7 @@ keymap("n", "<Up>", "<C-w>k", opts)
 keymap("n", "<Right>", "<C-w>l", opts)
 
 -- Clear search highlighting
-keymap("n", "<leader><Space>", ":nohlsearch<CR>", opts)
+-- keymap("n", "<leader><Space>", ":nohlsearch<CR>", opts)
 
 -- Navigation
 -- move cursor line to center of screen when scrolling down and up

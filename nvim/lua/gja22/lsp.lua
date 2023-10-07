@@ -1,8 +1,20 @@
 -- LSP Setup
 
+-- Diagnostic keymaps and styling
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+
+vim.diagnostic.config {
+    float = {
+        source = 'always',
+        border = 'rounded',
+    },
+}
+
 -- This function gets run when an LSP connects to a particular buffer
 local on_attach = function(_, bufnr)
-
     -- Helper fucntion to define mappings
     local nmap = function(keys, func, desc)
         if desc then
@@ -11,93 +23,106 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('<leader>lr', vim.lsp.buf.rename, '[L]SP [R]ename')
-    nmap('<leader>la', vim.lsp.buf.code_action, '[L]SP [A]ction')
+    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
     -- TODO replace the following with command Format as setup below
-    nmap('<leader>lf', vim.lsp.buf.format, '[L]SP [F]ormat')
+    -- nmap('<leader>cf', vim.lsp.buf.format, '[C]ode [F]ormat')
 
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    nmap('gt', vim.lsp.buf.type_definition, '[G]oto [T]ype definition')
-    -- TODO look into document and workspace symbols
+    nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+    nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+    nmap('<leader>as', require('telescope.builtin').lsp_workspace_symbols, '[A]ll [S]ymbols')
 
     -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<leader>ls', vim.lsp.buf.signature_help, '[L]SP [S]ignature help')
+    -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature documentation')
 
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    -- TODO look into workspace folders
+  
+    -- TODO look into workspace folders from kickstart.nvim
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-        if vim.lsp.buf.format then
-            vim.lsp.buf.format()
-        elseif vim.lsp.buf.formatting then
-            vim.lsp.buf.formatting()
-        end
+        vim.lsp.buf.format()
     end, { desc = 'Format current buffer with LSP' })
 end
 
--- Setup mason so it can manage external tooling
-require('mason').setup()
+-- What is the which-key thing?
 
 -- Enable the following language servers
 --local servers = { 'sumneko_lua', 'gopls' }
-local servers = { 'lua_ls', 'gopls', 'terraformls', 'cssls', 'html' }
-
--- Ensure servers are installed
-require('mason-lspconfig').setup {
-    ensure_installed = servers,
+local servers = {
+    lua_ls = {
+        Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+        },
+    },
+    gopls = {},
+    terraformls = {},
+    cssls = {},
+    html = {},
 }
+
+
+-- Setup neovim lua configuration
+require('neodev').setup()
+
+-- Setup mason so it can manage external tooling
+require('mason').setup()
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-for _, lsp in ipairs(servers) do
-    require('lspconfig')[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-end
+-- Ensure the servers above are installed
+local mason_lspconfig = require 'mason-lspconfig'
+
+mason_lspconfig.setup {
+    ensure_installed = vim.tbl_keys(servers)
+}
+
+-- I don't get why the diagnostic border is a simle config option, but with
+-- hover and signature help that I need to do this. I'm guessing this will
+-- all get sorted out in future neovim releases.
+local border = {
+      {"┌", "FloatBorder"},
+      {"─", "FloatBorder"},
+      {"┐", "FloatBorder"},
+      {"│", "FloatBorder"},
+      {"┘", "FloatBorder"},
+      {"─", "FloatBorder"},
+      {"└", "FloatBorder"},
+      {"│", "FloatBorder"},
+}
+
+-- LSP settings (for overriding per client)
+local handlers =  {
+  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+}
+
+mason_lspconfig.setup_handlers {
+    function(server_name)
+        require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+            filetypes = (servers[server_name] or {}).filetypes,
+            handlers = handlers,
+        }
+    end
+}
 
 -- Turn on LSP status information
-require('fidget').setup()
+-- require('fidget').setup()
 
 -- Custom configuration for Lua
 -- Make runtime files discoverable to server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
--- setup lua lsp
---require('lspconfig').sumneko_lua.setup {
-require('lspconfig').lua_ls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using
-                -- (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your Lua path
-                path = runtime_path,
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file('', true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-}
+-- local runtime_path = vim.split(package.path, ';')
+-- table.insert(runtime_path, 'lua/?.lua')
+-- table.insert(runtime_path, 'lua/?/init.lua')
