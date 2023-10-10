@@ -1,10 +1,12 @@
 -- LSP Setup
+-- https://github.com/neovim/nvim-lspconfig
 
 -- Diagnostic keymaps
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', 'gq', vim.diagnostic.setloclist, { desc = 'Go to diagnostics/quickfix list' })
-vim.keymap.set('n', 'ge', vim.diagnostic.open_float, { desc = 'Go to diagnostic/error message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Goto next diagnostic message' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Goto previous diagnostic message' })
+vim.keymap.set('n', 'gq', vim.diagnostic.setloclist, { desc = 'Goto quickfix/diagnostics list' })
+vim.keymap.set('n', 'gw', vim.diagnostic.open_float, { desc = 'Goto diagnostic/error window' })
+vim.keymap.set('n', 'ge', require('telescope.builtin').diagnostics, { desc = "Goto project errors/diagnostics" })
 
 -- Diagnostic styling
 vim.diagnostic.config {
@@ -31,7 +33,7 @@ local on_attach = function(_, bufnr)
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
     nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap('<leader>as', require('telescope.builtin').lsp_workspace_symbols, '[A]ll [S]ymbols')
+    nmap('<leader>as', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[A]ll [S]ymbols')
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
     -- This clashes with Harpoon and I rarely use it
@@ -67,6 +69,7 @@ local servers = {
     terraformls = {},
     cssls = {},
     html = {},
+    tsserver = {},
 }
 
 
