@@ -47,11 +47,12 @@ return packer.startup(function(use)
     }
 
     -- Autocompletion
-    use { "hrsh7th/nvim-cmp",           -- Core completion engine
+    use { "hrsh7th/nvim-cmp",              -- Core completion engine
         requires = {
-            "hrsh7th/cmp-nvim-lsp",     -- integration with lspplugi
-            "L3MON4D3/LuaSnip",         -- snippet engine
-            "saadparwaiz1/cmp_luasnip", -- snippet completions
+            "hrsh7th/cmp-nvim-lsp",        -- integration with lspplugi
+            "L3MON4D3/LuaSnip",            -- snippet engine
+            "saadparwaiz1/cmp_luasnip",    -- snippet completions
+            "rafamadriz/friendly-snippets" -- adds some friendly snippets
         },
     }
     -- use { "hrsh7th/cmp-buffer" } -- buffer completions
