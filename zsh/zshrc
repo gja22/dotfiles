@@ -91,10 +91,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #alias python=/usr/local/bin/python3
-alias path='echo $PATH | tr ":" "\n"'
 
+alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+alias path='echo $PATH | tr ":" "\n"'
+alias c='clear'
+alias tt='~/personal/dotfiles/tmux/tmux-sessionizer'
 
 alias tgw='~/gja22/config/tmux-sessions/tmux-gja22-web'
 alias tpl='~/gja22/config/tmux-sessions/tmux-proglog'
