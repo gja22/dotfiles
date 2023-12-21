@@ -2,10 +2,11 @@
 
 -- Search
 vim.opt.incsearch = true
-vim.opt.ignorecase = true                       -- ignore case when searching
+vim.opt.ignorecase = true                       -- ignore case when searching and completing
 vim.opt.smartcase = true
 vim.opt.hlsearch = false
 -- :set hlsearch! to toggle within nvim
+vim.opt.inccommand = "split"                    -- Show substitutions in a split below
 
 -- Display
 vim.opt.cursorline = true                       -- highlight the current line
@@ -53,6 +54,7 @@ vim.opt.expandtab = true                        -- convert tabs to spaces
 vim.opt.tabstop = 4                             -- insert 4 spaces for a tab
 vim.opt.softtabstop = 4                         -- insert 4 spaces for a tab
 vim.opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
+vim.opt.virtualedit = "block"                   -- Allow virtual edit in block mode only
 
 -- Warnings
 vim.opt.errorbells = false                      -- turn off audio bell

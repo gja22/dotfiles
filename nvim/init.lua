@@ -7,10 +7,12 @@
 --   https://github.com/nvim-lua/kickstart.nvim
 --   https://github.com/VonHeikemen/lsp-zero.nvim
 --   https://github.com/nvim-lua/kickstart.nvim
+--   https://www.youtube.com/@vhyrro
 --
 -- All configuration files are a mess.
 -- Mine are no different.
 -- Wander here at your own risk!
 
 -- Load my configuration
-require 'gja22'
+-- require 'gja22'
+require 'gja22-new'
