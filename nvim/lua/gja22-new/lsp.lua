@@ -71,6 +71,8 @@ local servers = {
     cssls = {},
     html = {},
     tsserver = {},
+    -- ruby_ls = {},
+    solargraph = {},
 }
 
 
