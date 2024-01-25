@@ -1,114 +1,90 @@
-# Zsh configuration
+# .zshrc is executed when the shell starts
+zsh --version
+echo "executing .zshrc"
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# Set the prompt
+# PS1='%# '
+PROMPT='%(?.%F{14}⏺.%F{9}⏺)%f %2~ $ '
 
-# Set name of the theme to load
-ZSH_THEME="robbyrussell"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf docker docker-compose git golang history history-substring-search zsh-interactive-cd z)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-#alias python=/usr/local/bin/python3
-
+# Alias commands
+alias la='ls -aGF'                    #colorized output and hidden files
+alias ll='ls -lGF'                    #long listing, colorized output
+alias mkdir='mkdir -pv'	              #-p create intermediate dirs
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
-alias path='echo $PATH | tr ":" "\n"'
+alias cp='cp -iv'                     #-i prompt to overwrite
+alias mv='mv -iv'                     #-i prompt to overwrite
 alias c='clear'
+alias p='pwd'
+alias ll='ls -sal'
+alias path='echo $PATH | tr ":" "\n"'
 alias tt='~/personal/dotfiles/tmux/tmux-sessionizer'
+alias reload='source ~/.zshrc'        #reload bach profile in current session
 
-export PATH=$HOME/bin:~/go/bin:$PATH
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+alias gst='git status'
+
+# Update path
+export PATH=~/bin:~/go/bin:$PATH
 
 # Git display options
-# This will handle branch displays etc. inline rather
-# opening a new screen
+# This will handle branch displays etc. inline rather than opening a file
 export LESS=-FRX
-
-# Fix for making Docker plugin work
-autoload -U compinit && compinit
 
 # Load asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# Autoload zsh's `add-zsh-hook` and `vcs_info` functions
+# (-U autoload w/o substition, -z use zsh style)
+autoload -Uz add-zsh-hook vcs_info
+
+# Set prompt substitution so we can use the vcs_info_message variable
+setopt prompt_subst
+
+# Run the `vcs_info` hook to grab git info before displaying the prompt
+add-zsh-hook precmd vcs_info
+
+# Style the vcs_info message
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats '%b%u%c'
+# Format when the repo is in an action (merge, rebase, etc)
+zstyle ':vcs_info:git*' actionformats '%F{14}⏱ %*%f'
+zstyle ':vcs_info:git*' unstagedstr '*'
+zstyle ':vcs_info:git*' stagedstr '+'
+# This enables %u and %c (unstaged/staged changes) to work,
+# but can be slow on large repos
+zstyle ':vcs_info:*:*' check-for-changes true
+
+# Set the right prompt to the vcs_info message
+# RPROMPT='%F{8}⎇ ${vcs_info_msg_0_}'
+RPROMPT='%F{8}${vcs_info_msg_0_}'
+
+# AUTOCOMPLETION
+
+# initialize autocompletion
+autoload -U compinit && compinit
+
+# history setup
+setopt SHARE_HISTORY
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# autocompletion using arrow keys (based on history)
+# bindkey '\e[A' history-search-backward
+bindkey '\e[A' history-substring-search-up
+# bindkey '\e[B' history-search-forward
+bindkey '\e[B' history-substring-search-down
+
+# brew install zsh-history-substring-search
+# https://github.com/zsh-users/zsh-history-substring-search.git
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# brew install zsh-syntax-highlighting
+# https://github.com/zsh-users/zsh-syntax-highlighting.git
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# brew install zsh-autosuggestions
+# https://github.com/zsh-users/zsh-autosuggestions.git
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
