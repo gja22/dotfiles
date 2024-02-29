@@ -58,6 +58,9 @@ alt + shift - y : yabai -m space --mirror y-axis
 # # mirror tree x-axis
 alt + shift - x : yabai -m space --mirror x-axis
 
+# rotate windows clockwise
+alt + shift - r : yabai -m space --rotate 270
+
 # balance size of windows
 alt + shift - 0 : yabai -m space --balance
 
