@@ -20,12 +20,10 @@ require("lazy").setup({
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
     "nvim-tree/nvim-web-devicons",
---     "nvim-lualine/lualine.nvim",
 
     "tpope/vim-vinegar",
     "tpope/vim-unimpaired",
     "tpope/vim-surround",
-    "numToStr/Comment.nvim",
     "lukas-reineke/indent-blankline.nvim",
     "mbbill/undotree",
 
@@ -94,12 +92,11 @@ require("lazy").setup({
     -- Git related
     "tpope/vim-fugitive",
     "tpope/vim-rhubarb",
-    "lewis6991/gitsigns.nvim",
 
     "ThePrimeagen/harpoon",
 
     -- Autopairs, integrates with both cmp and treesitter
-    "windwp/nvim-autopairs",
+    -- "windwp/nvim-autopairs",
 
     {
         "folke/which-key.nvim",
