@@ -1,4 +1,4 @@
--- Shorten function name
+-- Shorten function namekeymap
 local nmap = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { desc = desc, })
 end
@@ -79,9 +79,6 @@ nmap("<leader>d", "gqip", 'Redraw long lines')
 
 -- PLUGIN MAPPINGS --
 
--- NvimTree
--- keymap("<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- My own plugin experiment
 -- nmap("<leader>zo", function() require("capture").oneonone() end, 'Zettel 1-1')
 -- nmap("<leader>zm", function() require("capture").meeting() end, 'Zettel neeting')
@@ -89,5 +86,3 @@ nmap("<leader>d", "gqip", 'Redraw long lines')
 -- nmap("<leader>zd", function() require("capture").daily() end, 'Zettel daily')
 -- nmap("<leader>zw", function() require("capture").weekly() end, 'Zettel weekly')
 
--- Undo Tree
--- nmap("<leader>u", vim.cmd.UndotreeToggle, 'Toggle Undotree')

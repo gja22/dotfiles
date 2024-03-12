@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require('lazy').setup({
     { import = 'gja22-new.plugins' },
     {
         "folke/neodev.nvim",
@@ -21,11 +21,7 @@ require("lazy").setup({
     "nvim-lua/popup.nvim",
     "nvim-tree/nvim-web-devicons",
 
-    "tpope/vim-vinegar",
-    "tpope/vim-unimpaired",
-    "tpope/vim-surround",
-    "lukas-reineke/indent-blankline.nvim",
-    "mbbill/undotree",
+    -- "lukas-reineke/indent-blankline.nvim",
 
     {
         "neovim/nvim-lspconfig",
@@ -88,10 +84,6 @@ require("lazy").setup({
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
-
-    -- Git related
-    "tpope/vim-fugitive",
-    "tpope/vim-rhubarb",
 
     "ThePrimeagen/harpoon",
 
