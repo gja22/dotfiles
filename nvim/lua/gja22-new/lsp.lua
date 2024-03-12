@@ -26,29 +26,15 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    -- nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+    -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
     nmap('<leader>cf', ':Format<cr>', '[C]ode [F]ormat')
 
-    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap('<leader>as', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[A]ll [S]ymbols')
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-
-    -- This clashes with Harpoon and I rarely use it
-    -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature documentation')
-
-    -- Lesser used LSP functionality
-    -- nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-    -- nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-    -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    --   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    -- nmap('<leader>wl', function()
-    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, '[W]orkspace [L]ist Folders')
+    -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+    -- nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    -- nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+    -- nmap('<leader>as', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[A]ll [S]ymbols')
+    -- nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -77,10 +63,10 @@ local servers = {
 
 
 -- Setup neovim lua configuration
-require('neodev').setup()
+-- require('neodev').setup()
 
 -- Setup mason so it can manage external tooling
-require('mason').setup()
+-- require('mason').setup()
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -126,7 +112,7 @@ mason_lspconfig.setup_handlers {
 }
 
 -- Turn on LSP status information
-require('fidget').setup()
+-- require('fidget').setup()
 
 -- Custom configuration for Lua
 -- Make runtime files discoverable to server
