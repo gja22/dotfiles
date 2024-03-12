@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    { import = 'gja22-new.plugins' },
     {
         "folke/neodev.nvim",
         opts = {},
@@ -19,7 +20,7 @@ require("lazy").setup({
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
     "nvim-tree/nvim-web-devicons",
-    "nvim-lualine/lualine.nvim",
+--     "nvim-lualine/lualine.nvim",
 
     "tpope/vim-vinegar",
     "tpope/vim-unimpaired",
@@ -114,12 +115,4 @@ require("lazy").setup({
         }
     },
 
-    -- Color Schemes
-    "folke/tokyonight.nvim",
-    "lunarvim/darkplus.nvim",
-    "gruvbox-community/gruvbox",
-    "Tsuzat/NeoSolarized.nvim",
-    "rose-pine/neovim",
-    "navarasu/onedark.nvim",
-    "rebelot/kanagawa.nvim",
 })

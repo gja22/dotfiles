@@ -1,13 +1,13 @@
 require("gja22-new.globals")
 require("gja22-new.options")
-require("gja22-new.plugins")
 require("gja22-new.keymaps")
+require("gja22-new.plugins")
 
 -- Plugin Configuration
 require("gja22-new.indentline")
 require("gja22-new.gitsigns")
-require("gja22-new.lualine")
-require("gja22-new.colorscheme")
+-- require("gja22-new.lualine")
+-- require("gja22-new.colorscheme")
 require("gja22-new.treesitter")
 require("gja22-new.lsp")
 require("gja22-new.cmp")
