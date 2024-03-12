@@ -87,9 +87,6 @@ require('lazy').setup({
 
     "ThePrimeagen/harpoon",
 
-    -- Autopairs, integrates with both cmp and treesitter
-    -- "windwp/nvim-autopairs",
-
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
