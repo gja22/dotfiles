@@ -6,6 +6,8 @@
 --   https://github.com/ThePrimeagen/.dotfiles
 --   https://github.com/nvim-lua/kickstart.nvim
 --   https://github.com/VonHeikemen/lsp-zero.nvim
+--   https://github.com/VonHeikemen/nvim-starter
+--   https://dev.to/vonheikemen/lazynvim-plugin-configuration-3opi
 --   https://github.com/nvim-lua/kickstart.nvim
 --   https://www.youtube.com/@vhyrro
 --

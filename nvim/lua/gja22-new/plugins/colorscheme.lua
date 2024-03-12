@@ -5,8 +5,11 @@ return {
     -- 'Tsuzat/NeoSolarized.nvim',
     -- 'rose-pine/neovim',
     -- 'navarasu/onedark.nvim',
-    'rebelot/kanagawa.nvim',
-    config = function()
-        vim.cmd.colorscheme('kanagawa-wave')
-    end
+    {
+        'rebelot/kanagawa.nvim',
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme('kanagawa-wave')
+        end
+    }
 }

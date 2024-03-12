@@ -2,6 +2,7 @@
 -- When confused try :help ibl.config
 return {
     'lukas-reineke/indent-blankline.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
         exclude = {
             filetypes = { 'markdown' },
