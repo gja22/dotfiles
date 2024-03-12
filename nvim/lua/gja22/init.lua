@@ -1,4 +1,4 @@
-require('gja22-new.globals')
-require('gja22-new.options')
-require('gja22-new.keymaps')
-require('gja22-new.lazy')
+require('gja22.globals')
+require('gja22.options')
+require('gja22.keymaps')
+require('gja22.lazy')

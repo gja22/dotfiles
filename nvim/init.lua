@@ -16,5 +16,4 @@
 -- Wander here at your own risk!
 
 -- Load my configuration
--- require 'gja22'
-require 'gja22-new'
+require 'gja22'

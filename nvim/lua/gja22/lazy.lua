@@ -12,5 +12,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    { import = 'gja22-new.plugins' },
+    { import = 'gja22.plugins' },
 })
