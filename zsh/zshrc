@@ -22,8 +22,11 @@ alias reload='source ~/.zshrc'        #reload bach profile in current session
 
 alias gst='git status'
 
+# Git display options
+# this will display branches etc. inline rather than opening a new screen
+export LESS=-FRX
 # Update path
-export PATH=~/bin:~/go/bin:$PATH
+export PATH=~/bin:/opt/homebrew/bin:~/go/bin:$PATH
 
 # Git display options
 # This will handle branch displays etc. inline rather than opening a file
@@ -86,3 +89,4 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # brew install zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions.git
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
