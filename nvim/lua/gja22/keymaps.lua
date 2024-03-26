@@ -41,7 +41,7 @@ nmap("N", "Nzz", "Find prev and center")
 
 -- Writing
 -- Redraw long lines to stay within width
-nmap("<leader>d", "gqip", "Redraw long lines")
+nmap("<leader>r", "gqip", "Redraw long lines")
 
 -- Better paste
 --keymap("v", "p", '"_dP', opts)
