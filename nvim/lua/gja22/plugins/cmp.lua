@@ -35,11 +35,18 @@ return {
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
+			{
+				"onsails/lspkind.nvim",
+				config = function()
+					require("lspkind").init()
+				end,
+			},
 		},
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
+			local kind = require("lspkind")
 
 			cmp.setup({
 				snippet = {
@@ -49,10 +56,24 @@ return {
 				},
 				completion = { completeopt = "menu,menuone,noinsert" },
 
+				---@diagnostic disable-next-line: missing-fields
+				formatting = {
+					format = function(entry, vim_item)
+						vim_item.kind = kind.presets.default[vim_item.kind] .. " " .. vim_item.kind
+						-- vim_item.kind = kind.presets.default[vim_item.kind]
+						vim_item.menu = ({
+							nvim_lsp = "[LSP]",
+							luasnip = "[LuaSnip]",
+							path = "[Path]",
+						})[entry.source.name]
+						return vim_item
+					end,
+				},
+
 				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(),
+					-- ["<C-n>"] = cmp.mapping.select_next_item(),
 					["<C-j>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
+					-- ["<C-p>"] = cmp.mapping.select_prev_item(),
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
