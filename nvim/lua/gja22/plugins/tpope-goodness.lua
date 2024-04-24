@@ -2,7 +2,7 @@
 return {
 	"tpope/vim-vinegar",
 	"tpope/vim-unimpaired",
-	"tpope/vim-surround",
+	-- "tpope/vim-surround",
 	"tpope/vim-rhubarb",
 	{
 		"tpope/vim-fugitive",
