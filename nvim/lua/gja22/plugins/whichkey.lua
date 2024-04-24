@@ -14,7 +14,10 @@ return {
 	config = function()
 		require("which-key").setup()
 		require("which-key").register({
-			["<leader>s"] = { name = "Search", _ = "which_key_ignore" },
+			["<leader>c"] = { name = "Code", _ = "which_key_ignore" },
+			["<leader>f"] = { name = "Find", _ = "which_key_ignore" },
+			["<leader>h"] = { name = "Hunk", _ = "which_key_ignore" },
+			["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
 			["<leader>t"] = { name = "Toggle", _ = "which_key_ignore" },
 			["<leader>z"] = { name = "Zettel", _ = "which_key_ignore" },
 		})
