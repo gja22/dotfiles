@@ -27,6 +27,12 @@ nmap("<leader>o", ":only<cr>", "Only window")
 nmap("<leader>tr", ":set relativenumber!<CR>", "Toggle relativenumber")
 nmap("<leader>tn", ":set number!<CR>", "Toggle number")
 nmap("<leader>tl", ":set list!<CR>", "Toggle listchars")
+nmap("<leader>tt", function()
+	vim.cmd.split()
+	vim.cmd.term()
+end, "Toggle Terminal")
+-- Leave insert mode in the terminal
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Exit terminal" })
 
 -- Clear search highlighting
 -- nmap("<leader><Space>", ":nohlsearch<CR>", "Clear search highlighting")
