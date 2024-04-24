@@ -10,7 +10,7 @@ return {
 		end, "Zettel 1-1")
 		nmap("<leader>zm", function()
 			require("capture").meeting()
-		end, "Zettel neeting")
+		end, "Zettel meeting")
 		nmap("<leader>zn", function()
 			require("capture").note()
 		end, "Zettel note")
